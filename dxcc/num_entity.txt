@@ -1,0 +1,354 @@
+1;﻿
+2;Entity
+3;Sov. Mil. Order of Malta
+4;Spratly Is.
+5;Monaco
+6;Agalega & St. Brandon
+7;Mauritius
+8;Rodriguez I.
+9;Equatorial Guinea
+10;Pagalu I.
+11;Fiji
+12;Conway Reef
+13;Rotuma I.
+14;Swaziland
+15;Tunisia
+16;Vietnam
+17;Guinea
+18;Bouvet
+19;Peter I I.
+20;Azerbaijan
+21;Georgia
+22;Montenegro
+23;Sri Lanka
+24;ITU HQ
+25;United Nations HQ
+26;East Timor
+27;Israel
+28;Libya
+29;Cyprus
+30;Tanzania
+31;Nigeria
+32;Madagascar
+33;Mauritania
+34;Niger
+35;Togo
+36;Western Samoa
+37;Uganda
+38;Kenya
+39;Senegal
+40;Jamaica
+41;Yemen
+42;Lesotho
+43;Malawi
+44;Algeria
+45;Barbados
+46;Maldives
+47;Guyana
+48;Croatia
+49;Ghana
+50;Malta
+51;Zambia
+52;Kuwait
+53;Sierra Leone
+54;West Malaysia
+55;East Malaysia
+56;Nepal
+57;Dem.Rep. Of Congo
+58;Burundi
+59;Singapore
+60;Rwanda                   
+61;Trinidad & Tobago
+62;Botswana
+63;Tonga
+64;Oman
+65;Bhutan
+66;United Arab Emirates
+67;Qatar
+68;Bahrain
+69;Pakistan
+70;Scarborough Reef
+71;Taiwan
+72;Pratas
+73;China
+74;Nauru
+75;Andorra
+76;The Gambia
+77;Bahamas
+78;Mozambique
+79;Chile
+80;Easter I.
+81;Juan Fernandez Is.
+82;San Felix & San Ambrosio
+83;Antarctica
+84;Cuba
+85;Morocco
+86;Bolivia
+87;Portugal
+88;Madeira Is.
+89;Azores
+90;Uruguay
+91;Sable I.
+92;St. Paul I.
+93;Angola
+94;Cape Verde
+95;Comoros
+96;Fed. Rep. of Germany
+97;Philippines
+98;Eritrea
+99;Palestine
+100;N. Cook Is.
+101;S. Cook Is.
+102;Niue
+103;Bosnia-Herzegovina
+104;Spain
+105;Balearic Is.
+106;Canary Is.
+107;Ceuta & Melilla
+108;Ireland
+109;Armenia
+110;Liberia
+111;Iran
+112;Moldovia
+113;Estonia
+114;Ethiopia
+115;Belarus
+116;Kyrgystan
+117;Tajikistan
+118;Turkmenistan
+119;France
+120;Guadeloupe
+121;Saint Barthelemy
+122;Saint Martin
+123;Mayotte
+124;New Caledonia
+125;Martinique
+126;Austral I.
+127;Clipperton I.
+128;French Polynesia
+129;Marquesas I.
+130;St. Pierre & Miquelon
+131;Glorioso Is.
+132;Juan de Nova, Europa
+133;Reunion
+134;Tromelin I.
+135;Crozet I.
+136;Kerguelen Is.
+137;Amsterdam & St. Paul Is.
+138;Wallis & Futuna Is.
+139;French Guiana
+140;England
+141;Isle of Man
+142;Northern Ireland
+143;Jersey
+144;Scotland
+145;Guernsey
+146;Wales
+147;Solomon Is.
+148;Temotu Province
+149;Hungary
+150;Switzerland
+151;Liechtenstein
+152;Ecuador
+153;Galapagos Is.
+154;Haiti
+155;Dominican Republic
+156;Colombia
+157;Malpelo I.
+158;San Andres & Providencia
+159;South Korea
+160;Panama
+161;Honduras
+162;Thailand
+163;Vatican
+164;Saudi Arabia
+165;Italy
+166;Sardinia
+167;Djibouti
+168;Grenada
+169;Guinea-Bissau
+170;St. Lucia
+171;Dominica
+172;St. Vincent
+173;Japan
+174;Minami Torishima
+175;Ogasawara
+176;Mongolia
+177;Svalbard
+178;Jan Mayen
+179;Jordan
+180;United States of America
+181;Guantanamo Bay
+182;Mariana Is.
+183;Baker & Howland Is.
+184;Guam
+185;Johnston I.
+186;Midway I.
+187;Palmyra & Jarvis Is.
+188;Hawaii
+189;Kure I.
+190;American Samoa
+191;Swain's I.
+192;Wake I.
+193;Alaska
+194;Navassa I.
+195;Virgin Is.
+196;Puerto Rico
+197;Desecheo I.
+198;Norway
+199;Argentina
+200;Luxembourg
+201;Lithuania
+202;Bulgaria
+203;Peru
+204;Lebanon
+205;Austria
+206;Finland
+207;Aland Is.
+208;Market Reef
+209;Czech Republic
+210;Slovak Republic
+211;Belgium
+212;Greenland
+213;Faroe Is.
+214;Denmark
+215;Papua New Guinea
+216;Aruba
+217;North Korea
+218;Netherlands
+219;Curaçao
+220;Bonaire
+221;Saba & St.Eustatius
+222;Sint Maarten
+223;Brazil
+224;Fernando de Noronha
+225;St. Peter & St. Paul Rock
+226;Trindade & Martim Vaz Is.
+227;Suriname
+228;Franz Josef Land
+229;Western Sahara
+230;Bangladesh
+231;Slovenia
+232;Seychelles
+233;Sao Tome & Principe
+234;Sweden
+235;Poland
+236;Sudan
+237;Egypt
+238;Greece
+239;Mount Athos
+240;Dodecanese
+241;Crete
+242;Tuvalu
+243;W. Kiribati (Gilbert Is.)
+244;C. Kiribati (Brit. Phoenix Is.)
+245;E. Kiribati (Line Is.)
+246;Banaba I. (Ocean I.)
+247;Somalia
+248;San Marino
+249;Belau (W. Caroline Is.)
+250;Turkey
+251;Iceland
+252;Guatemala
+253;Costa Rica
+254;Cocos I.
+255;Cameroon
+256;Corsica
+257;Central Africa
+258;Congo
+259;Gabon
+260;Chad
+261;Cote d'Ivoire
+262;Chesterfield Is.
+263;Benin
+264;Mali
+265;European Russia
+266;Kaliningrad
+267;Asiatic Russia
+268;Uzbekistan
+269;Kazakhstan
+270;Ukraine
+271;Antigua & Barbuda
+272;Belize
+273;St.Kitts & Nevis
+274;Namibia
+275;Micronesia (E.Caroline Is.)
+276;Marshall Is.
+277;Brunei
+278;Canada
+279;Australia
+280;Heard I.
+281;Macquarie I.
+282;Cocos-Keeling Is.
+283;Lord Howe I.
+284;Mellish Reef
+285;Norfolk I.
+286;Willis I.
+287;Christmas I.
+288;Anguilla
+289;Montserrat
+290;British Virgin Is.
+291;Turks & Caicos Is.
+292;Pitcairn I.
+293;Ducie I.
+294;Falkland Is.
+295;South Georgia I.
+296;South Orkney Is.
+297;South Sandwich Is.
+298;South Shetland Is.
+299;Bermuda
+300;Chagos Is.
+301;Hong Kong
+302;India
+303;Andaman & Nicobar Is.
+304;Laccadive Is.
+305;Mexico
+306;Revilla Gigedo
+307;Burkina Faso
+308;Cambodia
+309;Laos
+310;Macao
+311;Myanmar
+312;Afghanistan
+313;Indonesia
+314;Iraq
+315;Vanuatu
+316;Syria
+317;Latvia
+318;Nicaragua
+319;Romania
+320;El Salvador
+321;Serbia
+322;Venezuela
+323;Aves I.
+324;Zimbabwe
+325;Macedonia
+326;Kosovo
+327;South Sudan (Rep.Of)
+328;Albania
+329;Gibraltar
+330;UK Sov. Base Areas on Cyprus
+331;St. Helena
+332;Ascension I.
+333;Tristan da Cunha & Gough I.
+334;Cayman Is.
+335;Tokelau Is.
+336;New Zealand
+337;Chatham Is.
+338;Kermadec Is.
+339;New Zealand Subantartic Is
+340;Paraguay
+341;South Africa
+342;Prince Edward & Marion Is
+343;
+344;
+345;
+346;
+347;
+348;
+349;
+350;
+351;
+352;
+353;
+354;
