@@ -1,4 +1,4 @@
-                    Spratly Is.                        AS    50    26    247
+1S                  Spratly Is.                        AS    50    26    247
 1A                  Sovereign Military Order of Malta  EU    28    15    246
 3A                  Monaco                             EU    27    14    260
 3B6,7               Agalega & St. Brandon Is.          AF    53    39    004
