@@ -1,6 +1,4 @@
-﻿
-Prefix;Entity;Cont.;ITU;CQ
-1A0;Sov. Mil. Order of Malta;EU;28;15
+﻿1A0;Sov. Mil. Order of Malta;EU;28;15
 1S;Spratly Is.;AS;50;26
 3A;Monaco;EU;27;14
 3B6, 7;Agalega & St. Brandon;AF;53;39
@@ -21,8 +19,8 @@ Prefix;Entity;Cont.;ITU;CQ
 4L;Georgia;AS;29;21
 4O;Montenegro;EU;28;15
 4P-4S;Sri Lanka;AS;41;22
-4U_ITU;ITU HQ;EU;28;14
-4U_UN;United Nations HQ;NA;8;5
+4U;ITU HQ;EU;28;14
+4U;United Nations HQ;NA;8;5
 4W6;East Timor;OC;54;28
 4X, 4Z;Israel;AS;39;20
 5A;Libya;AF;38;34
@@ -340,5 +338,3 @@ ZL9;New Zealand Subantartic Is;OC;60;32
 ZP;Paraguay;SA;14;11
 ZR-ZU;South Africa;AF;57;38
 ZS8;Prince Edward & Marion Is;AF;57;38
-
-

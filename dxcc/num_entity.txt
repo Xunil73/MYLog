@@ -1,5 +1,5 @@
-247;﻿Sov. Mil. Order of Malta
-246;Spratly Is.
+246;﻿Sov. Mil. Order of Malta
+247;Spratly Is.
 260;Monaco
 004;Agalega & St. Brandon
 165;Mauritius
