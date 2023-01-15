@@ -1,0 +1,396 @@
+SMO Malta
+Minerva Reef
+Spratly Is
+Monaco
+Agalega & St Brandon
+Mauritius
+Rodriguez Is
+Equatorial Guinea
+Annobon Is
+Conway Reef
+Fiji
+Rotuma
+Swaziland
+Tunisia
+Vietnam
+Guinea
+Bouvet
+Peter I
+Azerbaijan
+Georgia
+Montenegro
+Sri Lanka
+ITU Geneva
+UN HQ
+Timor Leste
+Yemen Arab Rep
+Israel
+Libya
+Cyprus
+Tanzania
+Nigeria
+Madagascar
+Mauritania
+Niger
+Togo
+Samoa
+Uganda
+Kenya
+Senegal
+Jamaica
+Yemen
+Lesotho
+Malawi
+Algeria
+Barbados
+Maldives
+Guyana
+S Arabia/Iraq NZ
+Kuwait/S Arabia NZ
+Croatia
+Ghana
+Malta
+Zambia
+Kuwait
+Sierra Leone
+West Malaysia
+East Malaysia
+Nepal
+Dem Rep Congo (Zaire)
+Saar
+Burundi
+Ruanda-Urundi
+Singapore
+Rwanda
+Trinidad & Tobago
+Abu Ail, Jabal at Tair
+Botswana
+Tonga
+Oman
+Bhutan
+United Arab Emirates
+Qatar
+Bahrain
+Sikkim
+Tibet
+Pakistan
+Scarborough Reef
+Taiwan
+Pratas Is
+China
+Nauru
+Andorra
+Gambia
+Bahamas
+Mozambique
+Manchuria
+Chile
+San Felix
+Easter Is
+Juan Fernandez
+Antarctica
+Morocco
+Tangier
+Cuba
+Bolivia
+Damao, Diu
+Goa
+Portuguese Timor
+Portugal
+Madeira Is
+Azores
+Uruguay
+Sable Is
+St Paul Is
+Angola
+Cape Verde
+Comoros
+Germany
+Philippines
+Eritrea
+Palestine
+No Cook Is
+So Cook Is
+Niue
+Bosnia-Hercegovina
+Spain
+Balearic Is
+Canary Is
+Ceuta & Melilla
+Ifni
+Ireland
+Armenia
+Liberia
+Iran
+Moldova
+Estonia
+Ethiopia
+Belarus
+Kyrgyzstan
+Tajikistan
+Turkmenistan
+France
+French W Africa
+Guadeloupe
+Mayotte
+Comoros
+Fr Indo China
+St Barthelemy
+Chesterfield Is
+New Caledonia
+Martinique
+French India
+French Polynesia
+Austral Is
+Clipperton Is
+Marquesas Is
+St Pierre & Miquelon
+Fr Equatorial Africa
+Reunion
+St Martin
+Glorioso Is
+Juan de Nova, Europa
+Tromelin
+Crozet
+Kerguelen Is
+Amsterdam & St Paul Is
+Wallis & Futuna Is
+French Guiana
+England
+Isle of Man
+No Ireland
+Jersey
+Scotland
+Guernsey
+Wales
+Solomon Is
+Temotu
+Hungary
+Switzerland
+Liechtenstein
+Ecuador
+Galapagos Is
+Haiti
+Dominican Rep
+Colombia
+Malpelo Is
+San Andres & Providencia
+Bajo Nuevo
+Serrana Bnk, Roncador Cay
+So Korea
+Panama
+Honduras
+Thailand
+Vatican
+Saudi Arabia
+Italy
+Trieste
+Ital Somaliland
+Sardinia
+Djibouti
+Grenada
+Guinea-Bissau
+St Lucia
+Dominica
+St Vincent
+Japan
+Minami Torishima
+Ogasawara
+Okino Tori-shima
+Mongolia
+Svalbard
+Jan Mayen
+Jordan
+Neth New Guinea
+United States
+Guantanamo Bay
+Mariana Is
+Baker & Howland Is
+Guam
+Johnston Is
+Midway Is
+Palmyra, Jarvis Is
+Kingman Reef
+Hawaii
+Kure Is
+Am Samoa
+Swain's Island
+Wake Is
+Alaska
+Navassa Is
+Virgin Is
+Puerto Rico
+Desecheo Is
+Okinawa (Ryukyu)
+Swan Is
+Canal Zone
+Norway
+Argentina
+Luxembourg
+Lithuania
+Bulgaria
+Peru
+Lebanon
+Austria
+Finland
+Aland Is
+Market Reef
+Czech Republic
+Slovakia
+Belgium
+Greenland
+Faroe Is
+Denmark
+Papua New Guinea
+Papua Terr
+Terr New Guinea
+Aruba
+No Korea
+Netherlands
+Curacao
+Neth Antilles
+Bonaire
+Saba & St Eustatius
+St Maarten, Saba, St Eus
+St Maarten
+Java
+Sumatra
+Netherlands Borneo
+Celebe & Molucca Is
+Brazil
+Fernando de Noronha
+St Peter & St Paul Rocks
+Trindade & Martin Vaz Is
+Surinam
+Franz Josef Land
+Malyj Vysotskij Is
+Western Sahara
+Bangladesh
+Slovenia
+Seychelles
+Sao Tome & Principe
+Sweden
+Poland
+Sudan
+Southern Sudan
+Egypt
+Greece
+Mt Athos
+Dodecanese
+Crete
+Tuvalu
+West Kiribati
+Central Kiribati
+East Kiribati
+Banaba
+Somalia
+Afghanistan
+San Marino
+Palau
+Turkey
+Iceland
+Guatemala
+Costa Rica
+Cocos Is
+Cameroon
+Corsica
+Central African Rep
+Congo
+Gabon
+Chad
+Ivory Coast
+Benin
+Mali
+Russia
+Kaliningrad
+Russia (Asiatic)
+Uzbekistan
+Kazakhstan
+Karelo-Finnish Rep
+Ukraine
+Antigua, Barbuda
+Belize
+St Kitts, Nevis
+Namibia
+Micronesia
+Marshall Is
+Brunei
+Canada
+Australia
+Heard Is
+Macquarie Is
+Cocos-Keeling Is
+Lord Howe Is
+Mellish Reef
+Norfolk Is
+Willis Is
+Christmas Is
+Newfoundland, Labrador
+Anguilla
+Montserrat
+Br Virgin Is
+Turks & Caicos Is
+Pitcairn Is
+Ducie Is
+Falkland Is
+So Georgia Is
+So Orkney Is
+So Sandwich Is
+So Shetland Is
+Bermuda
+Zanzibar
+British Somaliland
+Chagos
+Aldabra
+Desroches
+Farquhar
+Hong Kong
+Malaya
+Sarawak
+Kuria Muria Is
+Kamaran Is
+India
+Andaman & Nicobar Is
+Lakshadweep Is
+Mexico
+Revilla Gigedo
+Burkina Faso
+Cambodia
+Laos
+Macao
+Myanmar (Burma)
+Indonesia
+Iraq
+Vanuatu
+Syria
+Latvia
+Nicaragua
+Romania
+El Salvador
+Serbia
+Venezuela
+Aves Is
+Zimbabwe
+Macedonia
+Kosovo
+South Sudan
+Albania
+Gibraltar
+Cyprus SBA
+Br No Borneo
+Palestine
+Gold Coast, Togoland
+St Helena
+Ascension Is
+Tristan da Cunha & Gough Is
+Cayman Is
+Tokelau Is
+New Zealand
+Chatham Is
+Kermadec Is
+NZ Subarctic Is
+Paraguay
+So Africa
+Penguin Is
+Pr Edward & Marion Is
+Walvis Bay
