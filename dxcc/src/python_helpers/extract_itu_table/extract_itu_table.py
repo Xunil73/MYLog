@@ -24,11 +24,10 @@ try:
                 id += 1
 
 
-
-    src.close()
-    dest.close()
-
 except BaseException as err:
     print('Fehler:', err)
  
     
+finally:
+    src.close()
+    dest.close()

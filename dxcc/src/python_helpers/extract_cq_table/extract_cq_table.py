@@ -25,10 +25,10 @@ try:
 
 
 
-    src.close()
-    dest.close()
-
 except BaseException as err:
     print('Fehler:', err)
  
     
+finally: 
+    src.close()
+    dest.close()
