@@ -24,19 +24,34 @@ try:
                 callpref = element.split('_')
                 suffix = callpref[1]
 
-            lastCharMinElement = 0
-            lastCharMaxElement = 0
+            prfx_printout = []
             element_range = element.split('-') # wir werten den Bereich aus um die Prefixes zu expandieren (AA-AC -> AA, AB, AC)
             if len(element_range) > 1:
+                lastCharMinElement = 0
+                lastCharMaxElement = 0
+                temp = element_range[0][:-1]
                 if str.isalpha(element_range[0][-1]):
                     lastCharMinElement = ascii_index.find(element_range[0][-1])
                     lastCharMaxElement = ascii_index.find(element_range[1][-1])
+                    asc_indexes = [ i for i in range(lastCharMinElement, lastCharMaxElement + 1) ]
+                    for i in asc_indexes:
+                        prfx_printout += [ temp + ascii_index[i] ]  
                 else:
                     lastCharMinElement = int(element_range[0][-1])
                     lastCharMaxElement = int(element_range[1][-1])
-            # TEST
-            print(element_range, lastCharMinElement, lastCharMaxElement, sep='\t')
-            # Prefixstring muss getestet werden auf einen Bereich der dann noch expandiert werden muss (AA-AC -> AA, AB, AC)
+                    numbers = [ i for i in range(lastCharMinElement, lastCharMaxElement + 1) ]
+                    for i in numbers:
+                        prfx_printout += [ temp + str(i)]
+                
+            else:
+                prfx_printout += element_range
+
+
+        for element in prfx_printout:
+            print('Prefix:', element, 'dxcc_index:', index)    
+            
+
+
 except BaseException as err:
     print('Fehler:', err)
 
