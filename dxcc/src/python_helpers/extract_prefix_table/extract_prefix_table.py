@@ -12,14 +12,13 @@ try:
     id = 1
     index = 0
     for line in src:
-
+        
         linesplit = line.split(';') # eine Zeile wird aufgeteilt am Semikolon in (interne) IndexID und Liste mit den Prefixstrings 
         index = int(linesplit[1])
         raw_prefix_list = linesplit[0].split(',')
 
-        for element in raw_prefix_list:  # jedes Element des Prefixstrings wird auf Vorhandensein eines '_' untersucht, bei fehlen 
-            prefix = ''                  # bleibt suffix leer
-            suffix = ''
+        for element in raw_prefix_list:                  
+            suffix = '\t'
             if element.find('_') != -1 :  
                 callpref = element.split('_')
                 suffix = callpref[1]
@@ -41,15 +40,17 @@ try:
                     lastCharMaxElement = int(element_range[1][-1])
                     numbers = [ i for i in range(lastCharMinElement, lastCharMaxElement + 1) ]
                     for i in numbers:
-                        prfx_printout += [ temp + str(i)]
+                        prfx_printout += [ temp + str(i) ]
                 
             else:
                 prfx_printout += element_range
 
 
         for element in prfx_printout:
-            print('Prefix:', element, 'dxcc_index:', index)    
-            
+            if element.find('_') != -1:
+                print('Prefix:', element[:-2], 'Suffix:', suffix, 'dxcc_index:', index)    
+            else:
+                print('Prefix:', element, 'Suffix:', suffix, 'dxcc_index:', index)
 
 
 except BaseException as err:
@@ -58,4 +59,5 @@ except BaseException as err:
 finally:
     src.close()
     dest.close()
+
 

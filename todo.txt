@@ -1,0 +1,3 @@
+# check callsign prefixes of USA in prefixes_sorted.txt
+# program print to file in extract_prefix_table.py
+
