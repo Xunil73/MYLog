@@ -45,15 +45,15 @@ try:
             else:
                 prfx_printout += element_range
 
-
+            
 # this is commented out because it causes a wrong printout of lines which includes a '_'
 # we have to find another way to erase the _Suffix from the prefixes...
 
-#        for element in prfx_printout:
-#            if element.find('_') != -1:
-#                print('Prefix:', element[:-2], 'Suffix:', suffix, 'dxcc_index:', index)    
-#            else:
-#                print('Prefix:', element, 'Suffix:', suffix, 'dxcc_index:', index)
+            for element in prfx_printout:
+                if element.find('_') != -1:
+                    print('Prefix:', element[:-2], 'Suffix:', suffix, 'dxcc_index:', index)    
+                else:
+                    print('Prefix:', element, 'Suffix:', suffix, 'dxcc_index:', index)
 
 
 except BaseException as err:
