@@ -9,7 +9,7 @@ try:
 
     ascii_index = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-    id = 1
+    pk_id = 1
     index = 0
     for line in src:
         
@@ -47,10 +47,15 @@ try:
 
 
         for element in prfx_printout:
+            printout_string = ''
             if element.find('_') != -1:
-                print('Prefix:', element[:-2], 'Suffix:', suffix, 'dxcc_index:', index)    
+                print('Prefix:', element[:-2], 'Suffix:', suffix, 'dxcc_index:', index, 'private_key_id:', pk_id)    
+                printout_string = element[:-2] + ',' + suffix + ',' + index + ',' + str(pk_id) + '\n'
             else:
-                print('Prefix:', element, 'Suffix:', suffix, 'dxcc_index:', index)
+                print('Prefix:', element, 'Suffix:', suffix, 'dxcc_index:', index, 'private_key_id:', pk_id)
+                printout_string = element + ',' + suffix + ',' + index + ',' + str(pk_id) + '\n'
+            pk_id += 1
+            dest.write(printout_string)
 
 
 except BaseException as err:
