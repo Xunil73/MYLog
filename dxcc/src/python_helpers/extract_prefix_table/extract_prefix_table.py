@@ -18,7 +18,7 @@ try:
         raw_prefix_list = linesplit[0].split(',')
 
         for element in raw_prefix_list:                  
-            suffix = '\t'
+            suffix = ''
             if element.find('_') != -1 :  
                 callpref = element.split('_')
                 suffix = callpref[1]
@@ -46,16 +46,16 @@ try:
                 prfx_printout += element_range
 
 
-        for element in prfx_printout:
-            printout_string = ''
-            if element.find('_') != -1:
-                print('Prefix:', element[:-2], 'Suffix:', suffix, 'dxcc_index:', index, 'private_key_id:', pk_id)    
-                printout_string = element[:-2] + ',' + suffix + ',' + index + ',' + str(pk_id) + '\n'
-            else:
-                print('Prefix:', element, 'Suffix:', suffix, 'dxcc_index:', index, 'private_key_id:', pk_id)
-                printout_string = element + ',' + suffix + ',' + index + ',' + str(pk_id) + '\n'
-            pk_id += 1
-            dest.write(printout_string)
+            for element in prfx_printout:
+                printout_string = ''
+                if element.find('_') != -1:
+                    print('Prefix:', element[:-2], 'Suffix:', suffix, 'dxcc_index:', index, 'private_key_id:', pk_id)    
+                    printout_string = element[:-2] + ',' + suffix + ',' + str(index) + ',' + str(pk_id) + '\n'
+                else:
+                    print('Prefix:', element, 'Suffix:', suffix, 'dxcc_index:', index, 'private_key_id:', pk_id)
+                    printout_string = element + ',' + suffix + ',' + str(index) + ',' + str(pk_id) + '\n'
+                pk_id += 1
+                dest.write(printout_string)
 
 
 except BaseException as err:
