@@ -3,7 +3,7 @@
 
 try:
     src = open('./../../src_rawdata/cq_sorted.txt', 'rt')
-    dest = open('cq_tableready.txt', 'at')
+    dest = open('cq_tableready.txt', 'wt')
 
     id = 1
     index = 0

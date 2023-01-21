@@ -4,7 +4,7 @@
 
 try:
     src = open('./../../src_rawdata/prefixes_sorted.txt', 'rt')
-    dest = open('prefix_tableready.txt', 'at')
+    dest = open('prefix_tableready.txt', 'wt')
 
 
     ascii_index = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'

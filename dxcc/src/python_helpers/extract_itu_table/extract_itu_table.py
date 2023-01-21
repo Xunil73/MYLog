@@ -3,7 +3,7 @@
 
 try:
     src = open('./../../src_rawdata/itu_sorted.txt', 'rt')
-    dest = open('itu_tableready.txt', 'at')
+    dest = open('itu_tableready.txt', 'wt')
 
     id = 1
     index = 0
