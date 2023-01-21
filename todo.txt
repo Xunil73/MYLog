@@ -1,7 +1,2 @@
-# extract_prefix_table.py BUG: some callsign prefixes are lost, see entity 339 in 
-# prefixes_sorted.txt: LU_Z,CE9,HF0,R1AN,4K1,VP8;339
-# the script only resolves VP8 to the id 339, the rest isn't printed
-# Perhaps the '_' is the key 
-#
 # programming the print-to-file of extract_prefix_table.py
 
