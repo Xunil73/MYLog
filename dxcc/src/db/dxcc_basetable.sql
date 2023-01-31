@@ -37,7 +37,7 @@ CREATE TABLE prefixes (
     prefix VARCHAR(5),
     suffix VARCHAR(5),
     dxcc_ref_id INTEGER,
-    prefix_id INTEGER
+    prefix_id INTEGER,
     PRIMARY KEY(prefix_id),
     FOREIGN KEY(dxcc_ref_id)
     REFERENCES countries(dxcc_ref_id)
