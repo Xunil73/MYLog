@@ -209,7 +209,7 @@ Baker & Howland Is,208
 Guam,209
 Johnston Is,210
 Midway Is,211
-Palmyra, Jarvis Is,212
+Palmyra Jarvis Is,212
 Kingman Reef,213
 Hawaii,214
 Kure Is,215
@@ -308,9 +308,9 @@ Uzbekistan,307
 Kazakhstan,308
 Karelo-Finnish Rep,309
 Ukraine,310
-Antigua, Barbuda,311
+Antigua & Barbuda,311
 Belize,312
-St Kitts, Nevis,313
+St Kitts & Nevis,313
 Namibia,314
 Micronesia,315
 Marshall Is,316
@@ -325,7 +325,7 @@ Mellish Reef,324
 Norfolk Is,325
 Willis Is,326
 Christmas Is,327
-Newfoundland, Labrador,328
+Newfoundland Labrador,328
 Anguilla,329
 Montserrat,330
 Br Virgin Is,331
