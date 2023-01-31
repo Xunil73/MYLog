@@ -63,7 +63,7 @@ Ruanda-Urundi,62
 Singapore,63
 Rwanda,64
 Trinidad & Tobago,65
-Abu Ail, Jabal at Tair,66
+Abu Ail Jabal at Tair,66
 Botswana,67
 Tonga,68
 Oman,69
@@ -93,7 +93,7 @@ Morocco,92
 Tangier,93
 Cuba,94
 Bolivia,95
-Damao, Diu,96
+Damao Diu,96
 Goa,97
 Portuguese Timor,98
 Portugal,99
@@ -149,7 +149,7 @@ Fr Equatorial Africa,148
 Reunion,149
 St Martin,150
 Glorioso Is,151
-Juan de Nova, Europa,152
+Juan de Nova Europa,152
 Tromelin,153
 Crozet,154
 Kerguelen Is,155
@@ -176,7 +176,7 @@ Colombia,175
 Malpelo Is,176
 San Andres & Providencia,177
 Bajo Nuevo,178
-Serrana Bnk, Roncador Cay,179
+Serrana Bnk Roncador Cay,179
 So Korea,180
 Panama,181
 Honduras,182
@@ -251,7 +251,7 @@ Curacao,250
 Neth Antilles,251
 Bonaire,252
 Saba & St Eustatius,253
-St Maarten, Saba, St Eus,254
+St Maarten - Saba - St Eus,254
 St Maarten,255
 Java,256
 Sumatra,257
@@ -379,7 +379,7 @@ Gibraltar,378
 Cyprus SBA,379
 Br No Borneo,380
 Palestine,381
-Gold Coast, Togoland,382
+Gold Coast - Togoland,382
 St Helena,383
 Ascension Is,384
 Tristan da Cunha & Gough Is,385
