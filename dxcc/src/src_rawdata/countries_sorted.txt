@@ -63,7 +63,7 @@ Ruanda-Urundi;62
 Singapore;63
 Rwanda;64
 Trinidad & Tobago;65
-Abu Ail, Jabal at Tair;66
+Abu Ail Jabal at Tair;66
 Botswana;67
 Tonga;68
 Oman;69
@@ -251,7 +251,7 @@ Curacao;250
 Neth Antilles;251
 Bonaire;252
 Saba & St Eustatius;253
-St Maarten, Saba, St Eus;254
+St Maarten - Saba - St Eus;254
 St Maarten;255
 Java;256
 Sumatra;257
@@ -308,7 +308,7 @@ Uzbekistan;307
 Kazakhstan;308
 Karelo-Finnish Rep;309
 Ukraine;310
-Antigua, Barbuda;311
+Antigua & Barbuda;311
 Belize;312
 St Kitts, Nevis;313
 Namibia;314
@@ -325,7 +325,7 @@ Mellish Reef;324
 Norfolk Is;325
 Willis Is;326
 Christmas Is;327
-Newfoundland, Labrador;328
+Newfoundland Labrador;328
 Anguilla;329
 Montserrat;330
 Br Virgin Is;331
@@ -379,7 +379,7 @@ Gibraltar;378
 Cyprus SBA;379
 Br No Borneo;380
 Palestine;381
-Gold Coast, Togoland;382
+Gold Coast Togoland;382
 St Helena;383
 Ascension Is;384
 Tristan da Cunha & Gough Is;385
