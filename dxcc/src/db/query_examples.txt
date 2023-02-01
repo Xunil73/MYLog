@@ -1,0 +1,21 @@
+# Gibt alle Länder in Zone 15 aus:
+sqlite> SELECT dxcc_name FROM countries 
+   ...>     JOIN cq_zones ON countries.dxcc_ref_id = cq_zones.dxcc_ref_id
+   ...>     AND cq_zones.cq_zone = 15;
+
+# Gibt alle Prefixe aus die zu Deutschland gehören:
+sqlite> SELECT prefix FROM prefixes JOIN countries ON
+   ...>     prefixes.dxcc_ref_id = countries.dxcc_ref_id
+   ...>     AND countries.dxcc_name = 'Germany';
+
+# Liefert alle Länder mit allen Kombinationen aus CQ und ITU Zone in denen sie liegen:
+sqlite> SELECT dxcc_name, cq_zone, itu_zone FROM countries
+   ...>     JOIN cq_zones ON countries.dxcc_ref_id = cq_zones.dxcc_ref_id
+   ...>     JOIN itu_zones ON countries.dxcc_ref_id = itu_zones.dxcc_ref_id;
+
+# dito, nur für Canada:
+sqlite> SELECT dxcc_name, cq_zone, itu_zone FROM countries
+   ...>     JOIN cq_zones ON countries.dxcc_ref_id = cq_zones.dxcc_ref_id
+   ...>     JOIN itu_zones ON countries.dxcc_ref_id = itu_zones.dxcc_ref_id
+   ...>     AND dxcc_name = 'Canada';
+
