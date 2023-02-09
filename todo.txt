@@ -1,6 +1,3 @@
-# theres still an error in countries_tableready.txt
-# some countries have a comma in the country name so the
-# dxcc_basedata.sql script dont work. Expected two columns
-# and with the comma in text there will be found three. 
+# nothing to fix 
 
 
