@@ -19,3 +19,6 @@ sqlite> SELECT dxcc_name, cq_zone, itu_zone FROM countries
    ...>     JOIN itu_zones ON countries.dxcc_ref_id = itu_zones.dxcc_ref_id
    ...>     AND dxcc_name = 'Canada';
 
+# Versuch alle DXCC Daten aus einem dxcc_ref_id heraus zu bekommen:
+sqlite> SELECT countries.dxcc_name, continents.continent_name, cq_zones.cq_zone, itu_zones.itu_zone FROM countries JOIN continents ON continents.dxcc_ref_id = countries.dxcc_ref_id JOIN cq_zones ON cq_zones.dxcc_ref_id = continents.dxcc_ref_id JOIN itu_zones ON itu_zones.dxcc_ref_id = continents.dxcc_ref_id WHERE countries.dxcc_ref_id = 91 OR countries.dxcc_ref_id = 1;
+
