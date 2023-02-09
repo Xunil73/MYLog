@@ -1,0 +1,62 @@
+# depslib dependency file v1.0
+1675930883 source:/home/harry/DATA/Entwicklung/CppDateien/Codeblocks/hamFunc/main.cpp
+	<iostream>
+	<string>
+	"array2d.h"
+	"Datenbank.h"
+	"hamfunc.h"
+
+1507712314 /home/harry/DATA/Entwicklung/CppDateien/Codeblocks/hamFunc/array2d.h
+	<cassert>
+	<cstddef>
+	<iostream>
+
+1675635548 /home/harry/DATA/Entwicklung/CppDateien/Codeblocks/hamFunc/Datenbank.h
+	"array2d.h"
+	<sqlite3.h>
+	<stdexcept>
+	<string>
+
+1675685765 source:/home/harry/Lenovo_share/Entwicklung/CppDateien/Codeblocks/hamFunc/main.cpp
+	<iostream>
+	<string>
+	"array2d.h"
+	"Datenbank.h"
+
+1675685765 /home/harry/Lenovo_share/Entwicklung/CppDateien/Codeblocks/hamFunc/array2d.h
+	<cassert>
+	<cstddef>
+	<iostream>
+
+1675685765 /home/harry/Lenovo_share/Entwicklung/CppDateien/Codeblocks/hamFunc/Datenbank.h
+	"array2d.h"
+	<sqlite3.h>
+	<stdexcept>
+	<string>
+
+1675931105 /home/harry/DATA/Entwicklung/CppDateien/Codeblocks/hamFunc/hamfunc.h
+	<string>
+	"Datenbank.h"
+
+1675933055 source:/home/harry/DATA/Entwicklung/git/MYlog/my_src/main.cpp
+	<iostream>
+	<string>
+	"array2d.h"
+	"Datenbank.h"
+	"hamfunc.h"
+
+1675933055 /home/harry/DATA/Entwicklung/git/MYlog/my_src/array2d.h
+	<cassert>
+	<cstddef>
+	<iostream>
+
+1675933055 /home/harry/DATA/Entwicklung/git/MYlog/my_src/Datenbank.h
+	"array2d.h"
+	<sqlite3.h>
+	<stdexcept>
+	<string>
+
+1675933238 /home/harry/DATA/Entwicklung/git/MYlog/my_src/hamfunc.h
+	<string>
+	"Datenbank.h"
+
