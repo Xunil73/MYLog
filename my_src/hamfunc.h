@@ -4,8 +4,7 @@
 #include <string>
 #include "Datenbank.h"
 
-Array2d<std::string> getDxccIndex(const std::string& call) {
-
+Array2d<std::string> getDxccRefID(const std::string& call) {
 
     enum column {PREFIX, SUFFIX, DXCC_REF, PK_ID};
 
@@ -39,7 +38,7 @@ Array2d<std::string> getDxccIndex(const std::string& call) {
             }
         }
 
-        std::string query = "SELECT * FROM prefixes WHERE prefix = \"" + prefix + "\" AND suffix = \"" + suffix + "\";";
+        std::string query = "SELECT dxcc_ref_id FROM prefixes WHERE prefix = \"" + prefix + "\" AND suffix = \"" + suffix + "\";";
 
         erg.assign(db.execute(query));
 
@@ -50,6 +49,48 @@ Array2d<std::string> getDxccIndex(const std::string& call) {
     }
 
     return erg;
+}
+
+
+
+Array2d<std::string> getFullDxccInfo(const std::string& call) {
+
+    Array2d<std::string> dxccIndex(1,1,"");
+    dxccIndex.assign(getDxccRefID(call));
+
+
+    std::string query = "SELECT countries.dxcc_name, continents.continent_name, \
+                                cq_zones.cq_zone, itu_zones.itu_zone FROM countries \
+                                JOIN continents ON continents.dxcc_ref_id = countries.dxcc_ref_id \
+                                JOIN cq_zones ON cq_zones.dxcc_ref_id = continents.dxcc_ref_id \
+                                JOIN itu_zones ON itu_zones.dxcc_ref_id = continents.dxcc_ref_id \
+                         WHERE countries.dxcc_ref_id = ";
+
+
+    if(dxccIndex.getZeilen() > 1) {
+        for(size_t row=1; row<dxccIndex.getZeilen(); ++row) {
+            std::string temp = "\"" + dxccIndex.at(row,0) + "\"";
+            if(row == 1) query += temp;
+            if(row > 1) query += (" OR countries.dxcc_ref_id = " + temp);
+        }
+        query += ";";
+    }
+
+    else query = "";
+
+
+    Array2d<std::string> fullDxccInfo(1,1,"");
+
+    try {
+        const char* basetable {"./../dxcc/src/db/dxcc_basetable.db"};
+        Datenbank db(basetable);
+        fullDxccInfo.assign(db.execute(query));
+    }
+    catch (const SQLError& e) {
+      std::cerr << e.what() << '\n';
+    }
+
+    return fullDxccInfo;
 }
 
 #endif // HAMFUNC_H

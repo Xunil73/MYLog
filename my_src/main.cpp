@@ -11,15 +11,14 @@ using namespace std;
 int main()
 {
 
-    string call ="R1AN/DJ6TB/p";
+    string call ="LU/DJ6TB/Z";
 
-    Array2d<std::string> dxcc_indexes = getDxccIndex(call);
+    Array2d<std::string> dxcc_indexes = getDxccRefID(call);
 
     printArray(dxcc_indexes);
 
+    Array2d<std::string> fullDxccInfo = getFullDxccInfo(call);
 
-
-
-
-
+    printArray(fullDxccInfo);
 }
+
