@@ -11,7 +11,7 @@ using namespace std;
 int main()
 {
 
-    string call ="LU/DJ6TB/Z";
+    string call ="LU/DJ5MY/Z";
 
     Array2d<std::string> dxcc_indexes = getDxccRefID(call);
 
