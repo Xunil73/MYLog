@@ -1,12 +1,13 @@
 /* cppbuch/k4/array2d/array2d.h
    Beispiel zum Buch von U. Breymann: Der C++ Programmierer; 5. Auflage 2017
-   Diese Software ist freie Software. Website: http://www.cppbuch.de/ 
+   Diese Software ist freie Software. Website: http://www.cppbuch.de/
 */
 #ifndef ARRAY2D_H
 #define ARRAY2D_H
 #include <cassert>
 #include <cstddef>
 #include <iostream>
+
 
 template <typename T> class Array2d {
 public:
@@ -82,4 +83,5 @@ template <typename T> void printArray(const Array2d<T>& a) {
     std::cout << '\n';
   }
 }
+
 #endif

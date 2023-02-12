@@ -4,7 +4,7 @@
 #include <string>
 #include "Datenbank.h"
 
-Array2d<std::string> getDxccRefID(const std::string& call) {
+Array2d<std::string> getDxccRefIDs(const std::string& call) {
 
     enum column {PREFIX, SUFFIX, DXCC_REF, PK_ID};
 
@@ -53,10 +53,10 @@ Array2d<std::string> getDxccRefID(const std::string& call) {
 
 
 
-Array2d<std::string> getFullDxccInfo(const std::string& call) {
+Array2d<std::string> getFullDxccInfos(const std::string& call) {
 
     Array2d<std::string> dxccIndex(1,1,"");
-    dxccIndex.assign(getDxccRefID(call));
+    dxccIndex.assign(getDxccRefIDs(call));
 
 
     std::string query = "SELECT countries.dxcc_name, continents.continent_name, \
@@ -93,4 +93,74 @@ Array2d<std::string> getFullDxccInfo(const std::string& call) {
     return fullDxccInfo;
 }
 
+
+
+Array2d<std::string> getCqZoneInfos(const std::string& call) {
+
+    Array2d<std::string> dxccIndex(1,1,"");
+    dxccIndex.assign(getDxccRefIDs(call));
+
+    std::string query = "SELECT DISTINCT cq_zone FROM cq_zones \
+                         WHERE dxcc_ref_id = ";
+
+    if(dxccIndex.getZeilen() > 1) {
+        for(size_t row=1; row<dxccIndex.getZeilen(); ++row) {
+            std::string temp = "\"" + dxccIndex.at(row,0) + "\"";
+            if(row == 1) query += temp;
+            if(row > 1) query += (" OR dxcc_ref_id = " + temp);
+        }
+        query += ";";
+    }
+
+    else query = "";
+
+    Array2d<std::string> cqZoneInfos(1,1,"");
+
+    try {
+        const char* basetable {"./../dxcc/src/db/dxcc_basetable.db"};
+        Datenbank db(basetable);
+        cqZoneInfos.assign(db.execute(query));
+    }
+    catch (const SQLError& e) {
+      std::cerr << e.what() << '\n';
+    }
+
+    return cqZoneInfos;
+
+}
+
+
+Array2d<std::string> getItuZoneInfos(const std::string& call) {
+
+    Array2d<std::string> dxccIndex(1,1,"");
+    dxccIndex.assign(getDxccRefIDs(call));
+
+    std::string query = "SELECT DISTINCT itu_zone FROM itu_zones \
+                         WHERE dxcc_ref_id = ";
+
+    if(dxccIndex.getZeilen() > 1) {
+        for(size_t row=1; row<dxccIndex.getZeilen(); ++row) {
+            std::string temp = "\"" + dxccIndex.at(row,0) + "\"";
+            if(row == 1) query += temp;
+            if(row > 1) query += (" OR dxcc_ref_id = " + temp);
+        }
+        query += ";";
+    }
+
+    else query = "";
+
+    Array2d<std::string> ituZoneInfos(1,1,"");
+
+    try {
+        const char* basetable {"./../dxcc/src/db/dxcc_basetable.db"};
+        Datenbank db(basetable);
+        ituZoneInfos.assign(db.execute(query));
+    }
+    catch (const SQLError& e) {
+      std::cerr << e.what() << '\n';
+    }
+
+    return ituZoneInfos;
+
+}
 #endif // HAMFUNC_H

@@ -39,6 +39,7 @@
 		<Unit filename="array2d.h" />
 		<Unit filename="hamfunc.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="printfuncs.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
