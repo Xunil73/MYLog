@@ -84,6 +84,15 @@ template <typename T> void printArray(const Array2d<T>& a) {
   }
 }
 
+template <typename T> void printArrayNoHeader(const Array2d<T>& a) {
+  for (std::size_t z = 1; z < a.getZeilen(); ++z) {
+    for (std::size_t s = 0; s < a.getSpalten(); ++s) {
+      std::cout << a.at(z, s) << " ";
+    }
+    std::cout << '\n';
+  }
+}
+
 template <typename T> void printArrayOneLine(const Array2d<T>& a) {
   for (std::size_t z = 1; z < a.getZeilen(); ++z) {
     for (std::size_t s = 0; s < a.getSpalten(); ++s) {

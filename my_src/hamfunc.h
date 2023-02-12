@@ -163,4 +163,74 @@ Array2d<std::string> getItuZoneInfos(const std::string& call) {
     return ituZoneInfos;
 
 }
+
+
+Array2d<std::string> getDxccNameInfos(const std::string& call) {
+
+    Array2d<std::string> dxccIndex(1,1,"");
+    dxccIndex.assign(getDxccRefIDs(call));
+
+    std::string query = "SELECT DISTINCT dxcc_name FROM countries \
+                         WHERE dxcc_ref_id = ";
+
+    if(dxccIndex.getZeilen() > 1) {
+        for(size_t row=1; row<dxccIndex.getZeilen(); ++row) {
+            std::string temp = "\"" + dxccIndex.at(row,0) + "\"";
+            if(row == 1) query += temp;
+            if(row > 1) query += (" OR dxcc_ref_id = " + temp);
+        }
+        query += ";";
+    }
+
+    else query = "";
+
+    Array2d<std::string> dxccNameInfos(1,1,"");
+
+    try {
+        const char* basetable {"./../dxcc/src/db/dxcc_basetable.db"};
+        Datenbank db(basetable);
+        dxccNameInfos.assign(db.execute(query));
+    }
+    catch (const SQLError& e) {
+      std::cerr << e.what() << '\n';
+    }
+
+    return dxccNameInfos;
+
+}
+
+
+Array2d<std::string> getContinentInfos(const std::string& call) {
+
+    Array2d<std::string> dxccIndex(1,1,"");
+    dxccIndex.assign(getDxccRefIDs(call));
+
+    std::string query = "SELECT DISTINCT continent_name FROM continents \
+                         WHERE dxcc_ref_id = ";
+
+    if(dxccIndex.getZeilen() > 1) {
+        for(size_t row=1; row<dxccIndex.getZeilen(); ++row) {
+            std::string temp = "\"" + dxccIndex.at(row,0) + "\"";
+            if(row == 1) query += temp;
+            if(row > 1) query += (" OR dxcc_ref_id = " + temp);
+        }
+        query += ";";
+    }
+
+    else query = "";
+
+    Array2d<std::string> contInfos(1,1,"");
+
+    try {
+        const char* basetable {"./../dxcc/src/db/dxcc_basetable.db"};
+        Datenbank db(basetable);
+        contInfos.assign(db.execute(query));
+    }
+    catch (const SQLError& e) {
+      std::cerr << e.what() << '\n';
+    }
+
+    return contInfos;
+}
+
 #endif // HAMFUNC_H
