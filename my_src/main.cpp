@@ -21,19 +21,9 @@ int main()
 
     Array2d<std::string> cq_zones = getCqZoneInfos(call);
 
-    for(size_t i=0; i<cq_zones.getZeilen(); ++i) {
-        for(size_t j=0; j<cq_zones.getSpalten(); ++j) {
-            cout << cq_zones.at(i,j) << ", ";
-        }
-    }
-    cout << endl;
+    printArrayOneLine(cq_zones);
 
     Array2d<std::string> itu_zones = getItuZoneInfos(call);
 
-    for(size_t i=0; i<itu_zones.getZeilen(); ++i) {
-        for(size_t j=0; j<itu_zones.getSpalten(); ++j) {
-            cout << itu_zones.at(i,j) << ", ";
-        }
-    }
-    cout << endl;
+    printArrayOneLine(itu_zones);
 }
