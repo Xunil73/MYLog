@@ -1,4 +1,5 @@
-# nothing to fix 
-# erster clone auf AcerOne - Testeintrag
+Testprogramm zur hamfunc.h funktioniert mit Code::Blocks ausgeführt,
+jedoch nicht wenn die kompilierte Datei aus dem Terminal heraus gestartet 
+wird (SQL-Fehler: unable to open database) - Pfadanpassung in der hamfunc.h?
 
 
