@@ -2,4 +2,8 @@ Testprogramm zur hamfunc.h funktioniert mit Code::Blocks ausgeführt,
 jedoch nicht wenn die kompilierte Datei aus dem Terminal heraus gestartet 
 wird (SQL-Fehler: unable to open database) - Pfadanpassung in der hamfunc.h?
 
+hamfunc.h Funktionen hinsichtlich Wiederverwendbarkeit umschreiben:
+die Funktionen getDxCCRefIDs(const std::string& call) um ein
+getDxCCRefIDs(const std::string& call, const char* pathToDatabase) erweitern
+da der Pfad zur dxcc_datenbank fest in die Funktion geschrieben wurde.
 
