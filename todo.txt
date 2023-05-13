@@ -7,3 +7,22 @@ die Funktionen getDxCCRefIDs(const std::string& call) um ein
 getDxCCRefIDs(const std::string& call, const char* pathToDatabase) erweitern
 da der Pfad zur dxcc_datenbank fest in die Funktion geschrieben wurde.
 
+#############################################
+Important:
+Die Tabelle "prefixes" enthält Dupes. Ein 
+    "SELECT * FROM prefixes WHERE prefix='VK';
+ergibt zwei Einträge für VK:
+
+    prefix|suffix|dxcc_ref_id|prefix_id
+    VK||319|1128
+    VK||319|1133
+  
+vermutlich passiert das beim Extrahieren der Zeile
+    AX,VH-VN,VZ,VK;319 aus der ./dxcc/src/src_rawdata/prefix_sorted.txt
+durch das "./python-helpers/extract_prefix_table.py" Script da dies
+    'VH-VN' zu 'VK' extrahiert und zusätzlich nochmals 'VK' aufgeführt ist.
+Diese Dopplung muss in extract_prefix_table.py gepatcht werden und alle anderen
+python-helpers auf diesen Fehler hin überprüft weren.
+
+#############################################
+
