@@ -1,0 +1,28 @@
+CREATE TABLE calls (
+    call_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    call VARCHAR(15) UNIQUE
+);
+
+CREATE TABLE bands(
+    band_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    band VARCHAR(8) UNIQUE
+);
+
+CREATE TABLE modes (
+    mode_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    mode VARCHAR(10)
+);
+
+CREATE TABLE qsl_r (
+    qsl_r_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    qsl_r_status VARCHAR(3)
+);
+
+CREATE TABLE qsl_s (
+    qsl_s_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    qsl_s_status VARCHAR(4)
+);
+
+CREATE TABLE qsos (
+
+);
