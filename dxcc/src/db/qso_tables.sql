@@ -69,6 +69,10 @@ CREATE TABLE sats (
     sat_mode VARCHAR (6)
 );
 
+CREATE TABLE contests (
+    contest_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    contest VARCHAR(20)
+);
 
 CREATE TABLE qsos (
     qso_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -91,6 +95,7 @@ CREATE TABLE qsos (
     qso_qsl_manager INTEGER,
     qso_repeater INTEGER,
     qso_sat INTEGER,
+    qso_contest INTEGER,
     qso_remarks VARCHAR(250),
     FOREIGN KEY (qso_prefix) REFERENCES prefixes (p_id),
     FOREIGN KEY (qso_call) REFERENCES calls (c_id),
@@ -107,7 +112,8 @@ CREATE TABLE qsos (
     FOREIGN KEY (qso_qth) REFERENCES qths (qth_id),
     FOREIGN KEY (qso_qsl_manager) REFERENCES qsl_managers (qsl_manager_id),
     FOREIGN KEY (qso_repeater) REFERENCES repeaters (repeater_id),
-    FOREIGN KEY (qso_sat) REFERENCES sats (sat_id)
+    FOREIGN KEY (qso_sat) REFERENCES sats (sat_id),
+    FOREIGN KEY (qso_contest) REFERENCES contests (contest_id)
 );
 
 # weiter bei INSERT-Anweisungen
