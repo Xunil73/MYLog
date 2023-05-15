@@ -2,7 +2,8 @@
 #include <string>
 
 #include "hamfunc.h"
-
+#include "printfuncs.h"
+#include <vector>
 
 using namespace std;
 
@@ -11,34 +12,25 @@ int main()
 
     //string call ="R1AN/DJ5MY";
 
-    string call ="SV/DJ5MY/A";
+    string call ="R1AN/DJ5MY";
 
 
-    Array2d<std::string> dxcc_indexes = getDxccRefIDs(call);
+    Array2d<std::string> dxcc = getDxccNameInfos(call);
+    Array2d<std::string> cont = getContinentInfos(call);
+    Array2d<std::string> cq = getCqZoneInfos(call);
+    Array2d<std::string> itu = getItuZoneInfos(call);
+    cout << "das Call " << call << " gehört zu" << endl;
+    cout << "DXCC: "; printArrayNoHeader(dxcc);
+    cout << "Kontinent: "; printArrayOneLine(cont);
+    cout << "cq-Zone: "; printArrayOneLine(cq);
+    cout << "itu-Zone: "; printArrayOneLine(itu);
+    cout << "Ende der Ausgabe\n";
 
-    printArray(dxcc_indexes);
+    vector<Array2d<std::string>*> one;
+    vector<Array2d<std::string>*> two;
+    one.push_back(nullptr);
+    one.push_back(nullptr);
+    one.push_back(&cq);
+    printScreen(one, two);
 
-    printArrayNoHeader(dxcc_indexes);
-
-    Array2d<std::string> fullDxccInfo = getFullDxccInfos(call);
-
-    printArray(fullDxccInfo);
-
-    Array2d<std::string> cq_zones = getCqZoneInfos(call);
-
-    printArrayOneLine(cq_zones);
-
-    Array2d<std::string> itu_zones = getItuZoneInfos(call);
-
-    printArrayOneLine(itu_zones);
-
-    Array2d<std::string> dxcc_names = getDxccNameInfos(call);
-
-    printArray(dxcc_names);
-
-    printArrayOneLine(dxcc_names);
-
-    Array2d<std::string> continents = getContinentInfos(call);
-
-    printArrayOneLine(continents);
 }

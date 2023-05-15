@@ -24,5 +24,7 @@ durch das "./python-helpers/extract_prefix_table.py" Script da dies
 Diese Dopplung muss in extract_prefix_table.py gepatcht werden und alle anderen
 python-helpers auf diesen Fehler hin überprüft weren.
 
+UPDATE zu dem Bug: wurde händisch in den source-Tabellen korrigiert
+und die Datenbank neu aufgebaut.
 #############################################
 

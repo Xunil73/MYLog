@@ -1,51 +1,42 @@
 #ifndef PRINTFUNCS_H
 #define PRINTFUNCS_H
 
-#include <cstring>
+#include <iostream>
+#include <vector>
+#include "array2d.h"
 
-class Userinterface {
-    public:
-        Userinterface();
-        void drawHeader(const char* filltext);
-        void drawBody();
-        void drawInputSection();
-};
+void printLine();
+void printEmptyFrame();
 
-inline Userinterface::Userinterface() {}
-
-inline void Userinterface::drawHeader(const char* filltext) {
-    std::cout.width(70);
-    std::cout.fill('*');
-    std::cout << "" << std::endl;
-
-    // Rahmen wird gezeichnet, in der Mitte fuegen wir den filltext ein
-    int filltextLen = strlen(filltext);
-    int centerpos;
-    if (filltextLen % 2 == 0) centerpos = 34 - filltextLen / 2;
-    else centerpos = 33 - filltextLen / 2;
-
-    for(int j=0; j<5; ++j) {
-        if(j==2) {
-            std::cout << "*";
-            for(int i=0; i<(34 - filltextLen / 2); ++i) {
-                std::cout << " ";
-            }
-            std::cout << filltext;
-            for(int i=0; i<centerpos; ++i) {
-                std::cout << " ";
-            }
-            std::cout << "*" << std::endl;
+void printScreen(std::vector<Array2d<std::string>*> header, std::vector<Array2d<std::string>*> body) {
+    printLine();
+    for(auto element : header) {
+        if(element == nullptr) {
+            printEmptyFrame();
         }
         else {
-            std::cout << "*";
-            for(int i=0; i<68; ++i) {
-                std::cout << " ";
-            }
-            std::cout << "*" << std::endl;
+            std::cout << "*  "; printArrayOneLine(*element);
+            std::cout.width(74);
+            std::cout.fill(' ');
+            std::cout << "";
+            std::cout << '*';
         }
+
     }
-        std::cout.width(70);
-        std::cout.fill('*');
-        std::cout << "" << std::endl;
+}
+
+inline void printLine() {
+    std::cout.width(75);
+    std::cout.fill('*');
+    std::cout << "";
+    std::cout << std::endl;
+}
+
+inline void printEmptyFrame() {
+    std::cout << '*';
+    std::cout.width(73);
+    std::cout.fill(' ');
+    std::cout << "";
+    std::cout << '*' << std::endl;
 }
 #endif // PRINTFUNCS_H
