@@ -107,7 +107,7 @@ CREATE TABLE qsos (
     FOREIGN KEY (qso_qsl_s) REFERENCES qsl_s (qsl_s_id),
     FOREIGN KEY (qso_locator) REFERENCES locators (locator_id),
     FOREIGN KEY (qso_homelocator) REFERENCES homelocators (homelocator_id),
-    FOREIGN KEY (qso_homecalls) REFERENCES homecalls (homecall_id),
+    FOREIGN KEY (qso_homecall) REFERENCES homecalls (homecall_id),
     FOREIGN KEY (qso_operator) REFERENCES operators (operator_id),
     FOREIGN KEY (qso_qth) REFERENCES qths (qth_id),
     FOREIGN KEY (qso_qsl_manager) REFERENCES qsl_managers (qsl_manager_id),
