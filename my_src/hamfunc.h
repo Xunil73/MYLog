@@ -1,9 +1,7 @@
 #ifndef HAMFUNC_H
 #define HAMFUNC_H
 
-// DEBUG
-#include <iostream>
-//DEBUG
+
 #include <string>
 #include "Datenbank.h"
 
@@ -37,15 +35,13 @@ Array2d<std::string> getDxccRefIDs(const std::string& call) {
 
         for(size_t row=1; row<ausgabe.getZeilen(); ++row) {
             if(call.find(ausgabe.at(row, PREFIX)) == 0) {
-                // DEBUG
-                      std::cout << "ausgabe.at(row, PREFIX) :" << ausgabe.at(row, PREFIX) << std::endl;
-                // DEBUG
-                prefix = ausgabe.at(row, PREFIX);
+                unsigned long prefixLen = ausgabe.at(row, PREFIX).length();
+                if(call.find('/') == prefixLen) {
+                    prefix = ausgabe.at(row, PREFIX);
+                }
             }
         }
-        // DEBUG
-        std::cout << "PREFIX = " << prefix << std::endl;
-        // DEBUG
+
         std::string query = "SELECT dxcc_ref_id FROM prefixes WHERE prefix = \'" + prefix + "\' AND suffix = \'" + suffix + "\';";
 
         erg.assign(db.execute(query));
