@@ -1,6 +1,9 @@
 #ifndef HAMFUNC_H
 #define HAMFUNC_H
 
+// DEBUG
+#include <iostream>
+//DEBUG
 #include <string>
 #include "Datenbank.h"
 
@@ -37,8 +40,10 @@ Array2d<std::string> getDxccRefIDs(const std::string& call) {
                 prefix = ausgabe.at(row, PREFIX);
             }
         }
-
-        std::string query = "SELECT dxcc_ref_id FROM prefixes WHERE prefix = \"" + prefix + "\" AND suffix = \"" + suffix + "\";";
+        // DEBUG
+        std::cout << "PREFIX = " << prefix << std::endl;
+        // DEBUG
+        std::string query = "SELECT dxcc_ref_id FROM prefixes WHERE prefix = \'" + prefix + "\' AND suffix = \'" + suffix + "\';";
 
         erg.assign(db.execute(query));
 

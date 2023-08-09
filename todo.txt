@@ -28,3 +28,16 @@ UPDATE zu dem Bug: wurde händisch in den source-Tabellen korrigiert
 und die Datenbank neu aufgebaut.
 #############################################
 
+[BUG]
+wird die Funktion getDxccRefIDs() aus hamfunc.h mit dem Call 
+"XV9/DJ5MY" gefüttert dann passiert folgendes:
+
+Es wird die dxcc_ref_id 15 ausgegeben obwohl es die 3 sein müsste.
+15 gehört zu XV
+3 gehört zu XV9
+
+der Code innerhalb der DEBUG Kommentare bringt zutage dass der query-String
+nur "XV" enthält obwohl dort "XV9" enthalten sein müsste. 
+
+Verdacht: es liegt an der find() Funktion.
+

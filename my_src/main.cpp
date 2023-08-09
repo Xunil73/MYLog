@@ -10,10 +10,18 @@ using namespace std;
 int main()
 {
 
-    //string call ="R1AN/DJ5MY";
+     //string call ="R1AN/DJ5MY";
 
-    string call ="R1AN/DJ5MY";
+    string call ="XV9/DJ5MY";
 
+     Array2d<std::string> full = getFullDxccInfos(call);
+     Array2d<std::string> dxccRef = getDxccRefIDs(call);
+     printArray(full);
+     printArray(dxccRef);
+
+
+
+/*
 
     Array2d<std::string> dxcc = getDxccNameInfos(call);
     Array2d<std::string> cont = getContinentInfos(call);
@@ -32,5 +40,6 @@ int main()
     one.push_back(nullptr);
     one.push_back(&cq);
     printScreen(one, two);
+*/
 
 }
