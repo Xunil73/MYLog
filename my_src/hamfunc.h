@@ -37,6 +37,9 @@ Array2d<std::string> getDxccRefIDs(const std::string& call) {
 
         for(size_t row=1; row<ausgabe.getZeilen(); ++row) {
             if(call.find(ausgabe.at(row, PREFIX)) == 0) {
+                // DEBUG
+                      std::cout << "ausgabe.at(row, PREFIX) :" << ausgabe.at(row, PREFIX) << std::endl;
+                // DEBUG
                 prefix = ausgabe.at(row, PREFIX);
             }
         }
