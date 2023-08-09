@@ -39,5 +39,10 @@ Es wird die dxcc_ref_id 15 ausgegeben obwohl es die 3 sein müsste.
 der Code innerhalb der DEBUG Kommentare bringt zutage dass der query-String
 nur "XV" enthält obwohl dort "XV9" enthalten sein müsste. 
 
-Verdacht: es liegt an der find() Funktion.
+Lokalisation des Fehlers:
+Zeile 38 - 45 von hamfunc.h
+Der Suchalgorithmus zum Herausfinden des Prefix aus der Liste ist falsch.
+"XV9" aus XV9/DJ5MY wird als erstes gefunden, in weiteren Durchläufen der for-schleife
+wird jedoch danach noch "XV" von XV9/DJ5MY gefunden und als letztes Ergebnis
+weiterverarbeitet.
 
