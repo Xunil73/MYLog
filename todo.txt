@@ -46,3 +46,7 @@ Der Suchalgorithmus zum Herausfinden des Prefix aus der Liste ist falsch.
 wird jedoch danach noch "XV" von XV9/DJ5MY gefunden und als letztes Ergebnis
 weiterverarbeitet.
 
+    ---> Lösung: eine weitere Abfrage erstellt in der festgestellt wird ob
+                 auf den gesuchten Prefix ein "/" folgt.
+
+    ---> weiteres Problem: keine Lösung für Calls ohne vorangestellten Prefix                
