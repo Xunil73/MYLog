@@ -33,10 +33,25 @@ Array2d<std::string> getDxccRefIDs(const std::string& call) {
             }
         }
 
+     /* wir durchsuchen die Tabelle mit den Prefixen und vergleichen mit unserem Call. 
+        Wird die Zeichenkette des Prefixes am Anfang des Calls gefunden wird die Anzahl
+        der übereinstimmenden Zeichen gemerkt. Gibt es bei weiteren Durchläufen einen 
+        Prefix der noch mehr übereinstimmende Zeichen hat wird dieser als passender
+        Prefix festgelegt. Dies garantiert einen Match bei Calls mit und ohne "/" */
+
+        size_t hold_max {0};
         for(size_t row=1; row<ausgabe.getZeilen(); ++row) {
-            if(call.find(ausgabe.at(row, PREFIX)) == 0) {
-                unsigned long prefixLen = ausgabe.at(row, PREFIX).length();
-                if(call.find('/') == prefixLen) {
+            if(call.find(ausgabe.at(row, PREFIX)) == 0) {     // gesuchter Präfix steht am Anfang des Calls
+                size_t i {0};
+                size_t zaehler {0};
+                while(i < call.length() && i < ausgabe.at(row, PREFIX).length()) {
+                    if(call[i] == (ausgabe.at(row, PREFIX))[i])  ++zaehler;
+                    else break;
+                    ++i;
+                }
+
+                if(hold_max < zaehler) {
+                    hold_max = zaehler;
                     prefix = ausgabe.at(row, PREFIX);
                 }
             }
