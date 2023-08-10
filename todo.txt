@@ -28,25 +28,4 @@ UPDATE zu dem Bug: wurde händisch in den source-Tabellen korrigiert
 und die Datenbank neu aufgebaut.
 #############################################
 
-[BUG]
-wird die Funktion getDxccRefIDs() aus hamfunc.h mit dem Call 
-"XV9/DJ5MY" gefüttert dann passiert folgendes:
 
-Es wird die dxcc_ref_id 15 ausgegeben obwohl es die 3 sein müsste.
-15 gehört zu XV
-3 gehört zu XV9
-
-der Code innerhalb der DEBUG Kommentare bringt zutage dass der query-String
-nur "XV" enthält obwohl dort "XV9" enthalten sein müsste. 
-
-Lokalisation des Fehlers:
-Zeile 38 - 45 von hamfunc.h
-Der Suchalgorithmus zum Herausfinden des Prefix aus der Liste ist falsch.
-"XV9" aus XV9/DJ5MY wird als erstes gefunden, in weiteren Durchläufen der for-schleife
-wird jedoch danach noch "XV" von XV9/DJ5MY gefunden und als letztes Ergebnis
-weiterverarbeitet.
-
-    ---> Lösung: eine weitere Abfrage erstellt in der festgestellt wird ob
-                 auf den gesuchten Prefix ein "/" folgt.
-
-    ---> weiteres Problem: keine Lösung für Calls ohne vorangestellten Prefix                
