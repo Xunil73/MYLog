@@ -1,3 +1,6 @@
+# Fuegt Call ein wenn Call noch nicht in der Tabelle vorhanden:
+sqlite> INSERT OR IGNORE INTO calls (call) VALUES ("TE0ST");
+
 # Gibt alle Länder in Zone 15 aus:
 sqlite> SELECT dxcc_name FROM countries 
    ...>     JOIN cq_zones ON countries.dxcc_ref_id = cq_zones.dxcc_ref_id
