@@ -1,0 +1,37 @@
+INSERT OR IGNORE INTO calls (call) VALUES ("M1LLL");
+
+INSERT OR IGNORE INTO locators (locator) VALUES ("JO92AB");
+
+INSERT OR IGNORE INTO operators (operator) VALUES ("Tony");
+
+INSERT OR IGNORE INTO qths (qth) VALUES ("Plymouth");
+
+
+INSERT INTO qsos (qso_prefix, qso_call, qso_suffix, qso_date, qso_time, qso_band, qso_mode,
+                  qso_rst_r, qso_rst_s, qso_qsl_r, qso_qsl_s, qso_locator, qso_homelocator,
+                  qso_homecall, qso_operator, qso_qth, qso_qsl_manager, qso_repeater, qso_sat,
+                  qso_contest, qso_remarks)
+            VALUES (
+                  (SELECT prefix_id FROM prefixes WHERE prefix = 'M' AND suffix = ''),
+                  (SELECT call_id FROM calls WHERE call = 'M1LLL'),
+                  (NULL),
+                  (DATE()),
+                  (TIME()),
+                  (SELECT band_id FROM bands WHERE band = '30M'),
+                  (SELECT mode_id FROM modes WHERE mode = 'CW'),
+                  (SELECT rst_id FROM rsts WHERE rst = '599'),
+                  (SELECT rst_id FROM rsts WHERE rst = '579'),
+                  (SELECT qsl_s_id FROM qsl_s WHERE qsl_s_status = 'SEND'),
+                  (SELECT qsl_r_id FROM qsl_r WHERE qsl_r_status = 'NO'),
+                  (SELECT locator_id FROM locators WHERE locator = 'JO92AB'),
+                  (SELECT homelocator_id FROM homelocators WHERE homelocator = 'JN67CU'),
+                  (SELECT homecall_id FROM homecalls WHERE homecall = 'DJ5MY'),
+                  (SELECT operator_id FROM operators WHERE operator = 'Tony'),
+                  (SELECT qth_id FROM qths WHERE qth = 'Plymouth'),
+                  (NULL),
+                  (NULL),
+		  (NULL),
+		  (NULL),
+                  ("erstes QSO an Tony's neuem QTH!")
+           );
+
