@@ -46,7 +46,8 @@ Array2d<std::string> splitCall(const std::string& call) {
         }
 
         // ist ein gängiger Suffix enhalten (/p, /m, /am, /mm) ??
-        if(!specialSuffFound) {
+        constexpr size_t MIN_CALL_LEN = 5; // minimale Calllänge für Calls mit Suffix (e.g. K5D/P)
+        if(!specialSuffFound && call.length() > 5) {
             std::vector<std::string> stdsuff {"/P", "/M", "/AM", "/MM", "/QRP"};
 
             for(size_t i=0; i<stdsuff.size(); ++i) {
