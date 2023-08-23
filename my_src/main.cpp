@@ -31,13 +31,42 @@ int main() {
     clear();
     noecho();
     cbreak();
-    nodelay(stdscr, TRUE);
+    //nodelay(stdscr, TRUE);
     keypad(stdscr, TRUE);
+    start_color();
 
     getmaxyx(stdscr, row, col);
 
+    init_pair(1, COLOR_WHITE, COLOR_BLUE);
+    init_pair(2, COLOR_BLACK, COLOR_WHITE);
+    bkgd(COLOR_PAIR(1));
+    box(stdscr, 0, 0);
 
+    auto upperHLine = row / 4;
+    auto lowerHLine = (row / 4  * 3) + 2;
+    mvhline(upperHLine, 1, ACS_HLINE, col-2);
+    mvaddch(upperHLine ,0, ACS_LTEE);
+    mvaddch(upperHLine ,col-1, ACS_RTEE);
 
+    mvhline(lowerHLine, 1, ACS_HLINE, col-2);
+    mvaddch(lowerHLine ,0, ACS_LTEE);
+    mvaddch(lowerHLine ,col-1, ACS_RTEE);
+
+    auto labelLine =lowerHLine - 1;
+    constexpr size_t NUMOF_LABELS = 5;
+    vector<int> labelPosMiddle;  // wir berechnen die Mittenposition der Menülabel über der zweiten Trennlinie
+    for(size_t i=1; i<NUMOF_LABELS+1; ++i) {
+        auto labelPositions = (col / (NUMOF_LABELS+1)) * i;
+        labelPosMiddle.push_back(labelPositions);
+    }
+
+    const char* labels[NUMOF_LABELS] {"<F1>newQSO", "<F3>Search", "<F5>Edit", "<F7>showInfo", "<F9>Quit"};
+    for(size_t i=0; i<NUMOF_LABELS; ++i){
+        auto labelOffset = strlen(labels[i]) / 2;
+        attron(COLOR_PAIR(2));
+        mvaddstr(labelLine, labelPosMiddle[i] - labelOffset, labels[i]);
+        attroff(COLOR_PAIR(2));
+    }
     refresh();
     getch();
 
