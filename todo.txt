@@ -1,3 +1,4 @@
+
 hamfunc.h Funktionen hinsichtlich Wiederverwendbarkeit umschreiben:
 die Funktionen getDxCCRefIDs(const std::string& call) um ein
 getDxCCRefIDs(const std::string& call, const char* pathToDatabase) erweitern
