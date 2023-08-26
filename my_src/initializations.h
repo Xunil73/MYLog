@@ -4,7 +4,8 @@
 #include <ncurses.h>
 #include <string.h>
 #include <stdlib.h>
-#include <vector>
+
+
 /* used at program startup. Checks terminal size, if row and columns are to low
    the program asks to resize or quit
 */
@@ -35,34 +36,34 @@ void termResizeOrQuit(int& row, int& col) {
 void drawStdscrStylesheet(int& row, int& col) {
 
     init_pair(1, COLOR_WHITE, COLOR_BLUE);
-    init_pair(2, COLOR_BLACK, COLOR_WHITE);
+    init_pair(2, COLOR_YELLOW, COLOR_BLUE); // gibt es da ein schöneres Gelb?!
+    init_pair(3, COLOR_BLACK, COLOR_WHITE);
+
     bkgd(COLOR_PAIR(1));
-    box(stdscr, 0, 0);
 
-    auto upperHLine = row / 4;
-    auto lowerHLine = (row / 4  * 3) + 2;
-    mvhline(upperHLine, 1, ACS_HLINE, col-2);
-    mvaddch(upperHLine ,0, ACS_LTEE);
-    mvaddch(upperHLine ,col-1, ACS_RTEE);
+    // create the main box
+    mvhline(0, 1, ACS_HLINE, col-2);
+    mvaddch(0, 0, ACS_ULCORNER);
+    mvaddch(0, col-1, ACS_URCORNER);
+    mvaddch(1,0, ACS_VLINE);
+    mvvline(1, 0, ACS_VLINE, row-5);
+    mvvline(1, col-1, ACS_VLINE, row-5);
+    mvaddch(row-4, 0, ACS_LLCORNER);
+    mvaddch(row-4, col-1, ACS_LRCORNER);
+    mvhline(row-4, 1, ACS_HLINE, col-2);
 
-    mvhline(lowerHLine, 1, ACS_HLINE, col-2);
-    mvaddch(lowerHLine ,0, ACS_LTEE);
-    mvaddch(lowerHLine ,col-1, ACS_RTEE);
+    mvaddstr(0, col-17, "[up/dwn]");
 
-    auto labelLine = row - 1;
-    constexpr size_t NUMOF_LABELS = 5;
-    std::vector<int> labelPosMiddle;  // wir berechnen die Mittenposition der Menülabel über der zweiten Trennlinie
-    for(size_t i=1; i<NUMOF_LABELS+1; ++i) {
-        auto labelPositions = (col / (NUMOF_LABELS+1)) * i;
-        labelPosMiddle.push_back(labelPositions);
-    }
-
-    const char* labels[NUMOF_LABELS] {"<F1>Presets", "<F3>Search", "<F5>Edit", "<F7>Info", "<F9>Quit"};
-    for(size_t i=0; i<NUMOF_LABELS; ++i){
-        auto labelOffset = strlen(labels[i]) / 2;
-        attron(COLOR_PAIR(2));
-        mvaddstr(labelLine, labelPosMiddle[i] - labelOffset, labels[i]);
-        attroff(COLOR_PAIR(2));
-    }
+    attron(COLOR_PAIR(2));
+    mvaddstr(2, 3, "Nr.");
+    mvaddstr(2, 8, "Call");
+    mvaddstr(2, 14, "DD");
+    mvaddstr(2, 17, "MM");
+    mvaddstr(2, 20, "YYYY");
+    mvaddstr(2, 27, "Mode");
+    mvaddstr(2, 35, "Band");
+    mvaddstr(2, 42, "RST/TX");
+    mvaddstr(2, 55, "RST/RX");
+    attroff(COLOR_PAIR(2));
 }
 #endif // INITIALISATIONS_H
