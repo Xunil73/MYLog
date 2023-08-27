@@ -55,16 +55,18 @@ void drawStdscrStylesheet(int& row, int& col) {
     mvaddstr(0, col-17, "[up/dwn]");
 
     attron(COLOR_PAIR(2));
-    mvaddstr(2, 3, " Nr.         Call        DD   MM   YYYY   Time   RST(tx)  RST(rx)         AddInfo        ");
+    mvaddstr(2, 3, " Nr.         Call       Mode   Band   DD   MM   YYYY   Time  RSTt RSTr         AddInfo         ");
     attroff(COLOR_PAIR(2));
-    mvvline(3, 9, ACS_VLINE, row-8);
-    mvvline(3, 26, ACS_VLINE, row-8);
-    mvvline(3, 31, ACS_VLINE, row-8);
-    mvvline(3, 36, ACS_VLINE, row-8);
-    mvvline(3, 43, ACS_VLINE, row-8);
-    mvvline(3, 50, ACS_VLINE, row-8);
-    mvvline(3, 59, ACS_VLINE, row-8);
-    mvvline(3, 68, ACS_VLINE, row-8);
+    mvvline(3, 9, ACS_VLINE, row-9);
+    mvvline(3, 25, ACS_VLINE, row-9);
+    mvvline(3, 32, ACS_VLINE, row-9);
+    mvvline(3, 39, ACS_VLINE, row-9);
+    mvvline(3, 44, ACS_VLINE, row-9);
+    mvvline(3, 49, ACS_VLINE, row-9);
+    mvvline(3, 56, ACS_VLINE, row-9);
+    mvvline(3, 63, ACS_VLINE, row-9);
+    mvvline(3, 68, ACS_VLINE, row-9);
+    mvvline(3, 73, ACS_VLINE, row-9);
 
 }
 #endif // INITIALISATIONS_H
