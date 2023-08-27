@@ -36,7 +36,7 @@ void termResizeOrQuit(int& row, int& col) {
 void drawStdscrStylesheet(int& row, int& col) {
 
     init_pair(1, COLOR_WHITE, COLOR_BLUE);
-    init_pair(2, COLOR_YELLOW, COLOR_BLUE); // gibt es da ein schöneres Gelb?!
+    init_pair(2, COLOR_BLUE, COLOR_WHITE); // gibt es da ein schöneres Gelb?!
     init_pair(3, COLOR_BLACK, COLOR_WHITE);
 
     bkgd(COLOR_PAIR(1));
@@ -55,15 +55,16 @@ void drawStdscrStylesheet(int& row, int& col) {
     mvaddstr(0, col-17, "[up/dwn]");
 
     attron(COLOR_PAIR(2));
-    mvaddstr(2, 3, "Nr.");
-    mvaddstr(2, 8, "Call");
-    mvaddstr(2, 14, "DD");
-    mvaddstr(2, 17, "MM");
-    mvaddstr(2, 20, "YYYY");
-    mvaddstr(2, 27, "Mode");
-    mvaddstr(2, 35, "Band");
-    mvaddstr(2, 42, "RST/TX");
-    mvaddstr(2, 55, "RST/RX");
+    mvaddstr(2, 3, " Nr.         Call        DD   MM   YYYY   Time   RST(tx)  RST(rx)         AddInfo        ");
     attroff(COLOR_PAIR(2));
+    mvvline(3, 9, ACS_VLINE, row-8);
+    mvvline(3, 26, ACS_VLINE, row-8);
+    mvvline(3, 31, ACS_VLINE, row-8);
+    mvvline(3, 36, ACS_VLINE, row-8);
+    mvvline(3, 43, ACS_VLINE, row-8);
+    mvvline(3, 50, ACS_VLINE, row-8);
+    mvvline(3, 59, ACS_VLINE, row-8);
+    mvvline(3, 68, ACS_VLINE, row-8);
+
 }
 #endif // INITIALISATIONS_H
