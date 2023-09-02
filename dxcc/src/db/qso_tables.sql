@@ -65,8 +65,7 @@ CREATE TABLE repeaters (
 
 CREATE TABLE sats (
     sat_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    sat_name VARCHAR(10),
-    sat_mode VARCHAR (6)
+    sat_name VARCHAR(10)
 );
 
 CREATE TABLE contests (
@@ -143,8 +142,7 @@ INSERT INTO bands (band) VALUES ("6MM");
 INSERT INTO bands (band) VALUES ("4MM");
 
 INSERT INTO modes (mode) VALUES ("CW");
-INSERT INTO modes (mode) VALUES ("LSB");
-INSERT INTO modes (mode) VALUES ("USB");
+INSERT INTO modes (mode) VALUES ("SSB");
 INSERT INTO modes (mode) VALUES ("AM");
 INSERT INTO modes (mode) VALUES ("FM");
 INSERT INTO modes (mode) VALUES ("RTTY");
