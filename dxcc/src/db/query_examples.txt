@@ -1,3 +1,15 @@
+# Filterung nach Zeilen der Datenbank: Wir wollen nur bestimmte Zeilen der DB 
+# auf dem Hauptbildschirm anzeigen und nicht alle Datensaetze in das Frontend
+# kopieren um sie darzustellen. Problem: die Filterung nach der id aus qso_table
+# faellt aus da id-Nummern fehlen wenn ein QSO aus der Datenbank geloescht wird. 
+# Loesung: wir nummerieren alle Zeilen des Logbuches durch (bei der Abfrage)
+# und filtern dann anhand der angefuegten (fortlaufenden) Nummer. Das geht so:
+
+sqlite> WITH gesamt AS (SELECT ROW_NUMBER () OVER () AS rownum, id, etc FROM
+   ...>     qsos) SELECT * FROM gesamt WHERE rownum BETWEEN 19 AND 21;
+# ...zeigt die Logbuchzeile von 19 bis 21 an. 
+
+
 # Fuegt Call ein wenn Call noch nicht in der Tabelle vorhanden:
 sqlite> INSERT OR IGNORE INTO calls (call) VALUES ("TE0ST");
 
