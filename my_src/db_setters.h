@@ -34,27 +34,59 @@ struct QsoData {
     std::string remarks {""};
 };
 
-/* Der Unterschied isSwisslogImport ist: bei true wird Datum/Zeit als String übernommen
+/* Der Unterschied isLogImport ist: bei true wird Datum/Zeit als String übernommen
                                          bei false wird es mit den SQL DATE() / TIME() in die DB geschrieben */
-void addQso(const QsoData& qsoData, bool isSwisslogImport) {
+void insertQsoToDB(const QsoData& qsoData, bool isLogImport) {
 
     const char* basetable {"./../dxcc/src/db/dxcc_basetable.db"};
 
     std::string command =
-        "INSERT OR IGNORE INTO calls(call) VALUES(qsoData.call);" +
-        "INSERT OR IGNORE INTO bands(band) VALUES(UPPER(qsoData.band));" +
-        "INSERT OR IGNORE INTO modes(mode) VALUES(UPPER(qsoData.mode));" +
-        "INSERT OR IGNORE INTO rsts(rst) VALUES(qsoData.rstr);" +
-        "INSERT OR IGNORE INTO rsts(rst) VALUES(qsoData.rsts);";
-    if(qsoData.locator != "") command += "INSERT OR IGNORE INTO locators(locator) VALUES(UPPER(qsoData.locator));";
-    if(qsoData.homelocator != "") command += "INSERT OR IGNORE INTO homelocators(homelocator) VALUES(UPPER(qsoData.homelocator));";
-    if(qsoData.homecall != "") command += "INSERT OR IGNORE INTO homecalls(homecall) VALUES(UPPER(qsoData.homecall));";
-    if(qsoData.operator_name != "") command += "INSERT OR IGNORE INTO operators(operator) VALUES(qsoData.operator_name);";
-    if(qsoData.qth != "") command += "INSERT OR IGNORE INTO qths(qth) VALUES(qsoData.qth);";
-    if(qsoData.qslmanager != "") command += "INSERT OR IGNORE INTO qsl_managers(qsl_manager) VALUES(UPPER(qsoData.qslmanager));";
-    if(qsoData.repeater != "") command += "INSERT OR IGNORE INTO repeaters(repeater) VALUES(UPPER(qsoData.repeater));";
-    if(qsoData.sat != "") command += "INSERT OR IGNORE INTO sats(sat) VALUES(UPPER(qsoData.sat));";
-    if(qsoData.contest != "") command += "INSERT OR IGNORE INTO contests(contest) VALUES(qsoData.contest);";
+        "INSERT OR IGNORE INTO calls(call) VALUES('" + qsoData.call + "');" +
+        "INSERT OR IGNORE INTO bands(band) VALUES(UPPER('" + qsoData.band + "'));" +
+        "INSERT OR IGNORE INTO modes(mode) VALUES(UPPER('" + qsoData.mode + "'));" +
+        "INSERT OR IGNORE INTO rsts(rst) VALUES('" + qsoData.rstr + "');" +
+        "INSERT OR IGNORE INTO rsts(rst) VALUES('" + qsoData.rsts + "');";
+    if(qsoData.locator != "") command += "INSERT OR IGNORE INTO locators(locator) VALUES(UPPER('" + qsoData.locator + "'));";
+    if(qsoData.homelocator != "") command += "INSERT OR IGNORE INTO homelocators(homelocator) VALUES(UPPER('" + qsoData.homelocator + "'));";
+    if(qsoData.homecall != "") command += "INSERT OR IGNORE INTO homecalls(homecall) VALUES(UPPER('" + qsoData.homecall + "'));";
+    if(qsoData.operator_name != "") command += "INSERT OR IGNORE INTO operators(operator) VALUES('" + qsoData.operator_name + "');";
+    if(qsoData.qth != "") command += "INSERT OR IGNORE INTO qths(qth) VALUES('" + qsoData.qth + "');";
+    if(qsoData.qslmanager != "") command += "INSERT OR IGNORE INTO qsl_managers(qsl_manager) VALUES(UPPER('" + qsoData.qslmanager + "'));";
+    if(qsoData.repeater != "") command += "INSERT OR IGNORE INTO repeaters(repeater) VALUES(UPPER('" + qsoData.repeater + "'));";
+    if(qsoData.sat != "") command += "INSERT OR IGNORE INTO sats(sat) VALUES(UPPER('" + qsoData.sat + "'));";
+    if(qsoData.contest != "") command += "INSERT OR IGNORE INTO contests(contest) VALUES('" + qsoData.contest + "');";
+
+    // add the commands to fill the qso_table with qso-Data
+    command += "      \
+        INSERT INTO qsos(qso_prefix, qso_call, qso_suffix, qso_date, qso_time, qso_band, qso_mode, qso_rst_r,   \
+                         qso_rst_s, qso_qsl_r, qso_qsl_s, qso_locator, qso_homelocator, qso_homecall, qso_operator, \
+                         qso_qth, qso_qsl_manager, qso_repeater, qso_sat, qso_contest, qso_remarks)     \
+        VALUES (       \
+                   (SELECT prefix_id FROM prefixes WHERE prefix = UPPER('" + qsoData.prefix + "'))," +
+                  "(SELECT call_id FROM calls WHERE call = UPPER('" + qsoData.call + "'))," +
+                   "UPPER('" + qsoData.suffix + "'),";
+
+                            if(isLogImport) command += "'" + qsoData.date + "', '" + qsoData.time + "',";
+                            else command += "DATE(), TIME(),";
+
+    command +=    "(SELECT band_id FROM bands WHERE band = UPPER('" + qsoData.band + "'))," +
+                  "(SELECT mode_id FROM modes WHERE mode = UPPER('" + qsoData.mode + "'))," +
+                  "(SELECT rst_id FROM rsts WHERE rst = '" + qsoData.rstr + "')," +
+                  "(SELECT rst_id FROM rsts WHERE rst = '" + qsoData.rsts + "')," +
+                  "(SELECT qsl_r_id FROM qsls WHERE qsl_r = '" + qsoData.qslr + "')," +
+                  "(SELECT qsl_s_id FROM qsls WHERE qsl_s = '" + qsoData.qsls + "')," +
+                  "(SELECT locator_id FROM locators WHERE locator = UPPER('" + qsoData.locator + "'))," +
+                  "(SELECT homelocator_id FROM homelocators WHERE homelocator = UPPER('" + qsoData.homelocator + "'))," +
+                  "(SELECT homecall_id FROM homecalls WHERE homecall = UPPER('" + qsoData.homecall + "'))," +
+                  "(SELECT operator_id FROM operators WHERE operator = '" + qsoData.operator_name + "')," +
+                  "(SELECT qth_id FROM qths WHERE qth = '" + qsoData.qth + "')," +
+                  "(SELECT qsl_manager_id FROM qsl_managers WHERE qsl_manager = UPPER('" + qsoData.qslmanager + "'))," +
+                  "(SELECT repeater_id FROM repeaters WHERE repeater = UPPER('" + qsoData.repeater + "'))," +
+                  "(SELECT sat_id FROM sats WHERE sat = UPPER('" + qsoData.sat + "'))," +
+                  "(SELECT contest_id FROM contests WHERE contest = '" + qsoData.contest + "'), '" +
+                  qsoData.remarks + "');";
+
+
 }
 
 void importSwisslogCSV(const char* homecall, const char* inputfile) {
