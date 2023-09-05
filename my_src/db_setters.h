@@ -86,27 +86,45 @@ void insertQsoToDB(const QsoData& qsoData, bool isLogImport) {
                   "(SELECT contest_id FROM contests WHERE contest = '" + qsoData.contest + "'), '" +
                   qsoData.remarks + "');";
 
+    try {
+
+        Datenbank db(basetable);
+
+        db.execute(command.c_str());
+
+        // DEBUG
+        std::cout << command.c_str() << '/n';
+        // ENDE DEBUG
+    }
+
+    catch (const SQLError& e) {
+        std::cerr << e.what() << '/n';
+    }
 
 }
 
-void importSwisslogCSV(const char* homecall, const char* inputfile) {
+void importCSV(const char* homecall, const char* inputfile) {
 
     const char* basetable {"./../dxcc/src/db/dxcc_basetable.db"};
 
-    size_t lineindex {1};
+    size_t lineindex {0};
     std::ifstream src(inputfile);
     while(src.good()) {
-        if(lineindex++ == 1) continue; // Überschrift der CSV überspringen
+        if(++lineindex == 1) continue; // Überschrift der CSV überspringen
         std::string inputstr; // nimmt eine Zeile der CSV entgegen
         std::vector<std::string> csvFields; // nimmt die zerlegten Strings von inputstr auf.
         getline(src, inputstr);
+        // DEBUG
+        std::cerr << inputstr << '/n';
+        // ENDE DEBUG
         QsoData qsoData;
         std::string substr {""};
         size_t inputstr_index {0};
-        while(inputstr_index++ > inputstr.length()) { // das ist möglich da das erste Zeichen des ersten
+        while(inputstr_index < inputstr.length()) { // das ist möglich da das erste Zeichen des ersten
             if(inputstr.at(inputstr_index) == ';') {  // Substrings ein " ist, das kann übersprungen werden.
                 csvFields.push_back(substr);
                 substr = "";
+                ++inputstr_index;
             }
             if(inputstr.at(inputstr_index) == '"') continue; // die " werden übersprungen
             substr = substr + inputstr.at(inputstr_index);
@@ -114,7 +132,7 @@ void importSwisslogCSV(const char* homecall, const char* inputfile) {
         // wir  brauchen nur bestimmte CSV-Daten im Vektor für den Import
         // Achtung! in der CSV kommt erst rsts dann rstr. Deshalb hier der Zuweisungsdreher
         enum Field {CALL, DATE, TIME, BAND, MODE, QSLR, QSLS, RSTR=8, RSTS=7, QTH=9, LOCATOR=10,
-                           REMARKS=11; OPERATOR_NAME=12, QSLMANAGER=15};
+                           REMARKS=11, OPERATOR_NAME=12, QSLMANAGER=15};
 
         /* Strategie:
            Nun Zerlegen wir das Call mit splitCall() aus hamfunc.h und speichern alle Teile des Vectors in
@@ -125,8 +143,7 @@ void importSwisslogCSV(const char* homecall, const char* inputfile) {
         */
 
         // we fill the qsoData struct:
-        Array2d<std::string> callsign(1,1,"");
-        callsign = splitCall(csvFields.at(Field::CALL));
+        Array2d<std::string> callsign = splitCall(csvFields.at(Field::CALL));
         qsoData.prefix = callsign.at(1,1); // using upper in SQL-Statement
         qsoData.call = callsign.at(1,2);   // dito
         qsoData.suffix = callsign.at(1,3); // dito
@@ -148,8 +165,10 @@ void importSwisslogCSV(const char* homecall, const char* inputfile) {
 
         qsoData.homecall = homecall;
 
-    }
+        insertQsoToDB(qsoData, true);
 
+    }
+    src.close();
 }
 
 // Datumskonvertierung DD-MM-YYYY -> YYYY-MM-DD
