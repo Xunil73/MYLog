@@ -74,8 +74,8 @@ void insertQsoToDB(const QsoData& qsoData, bool isLogImport) {
                   "(SELECT mode_id FROM modes WHERE mode = UPPER('" + qsoData.mode + "'))," +
                   "(SELECT rst_id FROM rsts WHERE rst = '" + qsoData.rstr + "')," +
                   "(SELECT rst_id FROM rsts WHERE rst = '" + qsoData.rsts + "')," +
-                  "(SELECT qsl_r_id FROM qsls WHERE qsl_r = '" + qsoData.qslr + "')," +
-                  "(SELECT qsl_s_id FROM qsls WHERE qsl_s = '" + qsoData.qsls + "')," +
+                  "(SELECT qsl_r_id FROM qsl_r WHERE qsl_r_status = '" + qsoData.qslr + "')," +
+                  "(SELECT qsl_s_id FROM qsl_s WHERE qsl_s_status = '" + qsoData.qsls + "')," +
                   "(SELECT locator_id FROM locators WHERE locator = UPPER('" + qsoData.locator + "'))," +
                   "(SELECT homelocator_id FROM homelocators WHERE homelocator = UPPER('" + qsoData.homelocator + "'))," +
                   "(SELECT homecall_id FROM homecalls WHERE homecall = UPPER('" + qsoData.homecall + "'))," +
@@ -83,7 +83,7 @@ void insertQsoToDB(const QsoData& qsoData, bool isLogImport) {
                   "(SELECT qth_id FROM qths WHERE qth = '" + qsoData.qth + "')," +
                   "(SELECT qsl_manager_id FROM qsl_managers WHERE qsl_manager = UPPER('" + qsoData.qslmanager + "'))," +
                   "(SELECT repeater_id FROM repeaters WHERE repeater = UPPER('" + qsoData.repeater + "'))," +
-                  "(SELECT sat_id FROM sats WHERE sat = UPPER('" + qsoData.sat + "'))," +
+                  "(SELECT sat_id FROM sats WHERE sat_name = UPPER('" + qsoData.sat + "'))," +
                   "(SELECT contest_id FROM contests WHERE contest = '" + qsoData.contest + "'), '" +
                   qsoData.remarks + "');";
 
@@ -93,9 +93,6 @@ void insertQsoToDB(const QsoData& qsoData, bool isLogImport) {
 
         db.execute(command.c_str());
 
-        // DEBUG
-        std::cout << command.c_str() << '/n';
-        // ENDE DEBUG
     }
 
     catch (const SQLError& e) {
@@ -117,12 +114,11 @@ void importCSV(const char* homecall, const char* inputfile) {
         if(++lineindex == 1) getline(src, inputstr);
         // DEBUG
         // std::cerr << inputstr << '/n';
-        std::cout << lineindex << std::endl;
         // ENDE DEBUG
         QsoData qsoData;
         std::string substr {""};
         size_t inputstr_index {0};
-        while(inputstr_index < inputstr.length()) { // das ist möglich da das erste Zeichen des ersten
+        while(inputstr_index < inputstr.length()) {
               if(inputstr.at(inputstr_index == '"'))
                   if(inputstr_index < inputstr.length()-1 && inputstr.at(inputstr_index) + 1 == '"') {
                       substr = "";
@@ -130,13 +126,16 @@ void importCSV(const char* homecall, const char* inputfile) {
                   }
               if(inputstr.at(inputstr_index) == ';' || inputstr_index == inputstr.length()-1) {
                   csvFields.push_back(substr);
+                  substr = "";
                   ++inputstr_index;
               }
               else {
-                  substr = substr + inputstr.at(inputstr_index);
+                  if(inputstr.at(inputstr_index) != '"') substr = substr + inputstr.at(inputstr_index);
                   ++inputstr_index;
               }
-
+        // DEBUG
+        //for(int i =0; i<csvFields.size(); ++i) {std::cout << csvFields.at(i) << std::endl;}
+        // ENDE DEBUG
         }
         // wir  brauchen nur bestimmte CSV-Daten im Vektor für den Import
         // Achtung! in der CSV kommt erst rsts dann rstr. Deshalb hier der Zuweisungsdreher
