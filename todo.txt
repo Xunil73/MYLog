@@ -1,3 +1,7 @@
+db_setters scheint korrekt importieren zu wollen, nun aber SQL - Fehler.
+Die Tabellen müssen noch auf UNIQUE umgeschrieben werden!!!
+
+
 
 hamfunc.h Funktionen hinsichtlich Wiederverwendbarkeit umschreiben:
 die Funktionen getDxCCRefIDs(const std::string& call) um ein

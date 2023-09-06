@@ -1,6 +1,7 @@
 #ifndef DB_SETTERS_H
 #define DB_SETTERS_H
 
+#include <iostream>
 #include <string>
 #include <vector>
 #include "Datenbank.h" // imports all nessassary for Sql operations
@@ -105,33 +106,41 @@ void insertQsoToDB(const QsoData& qsoData, bool isLogImport) {
 
 void importCSV(const char* homecall, const char* inputfile) {
 
-    const char* basetable {"./../dxcc/src/db/dxcc_basetable.db"};
+    const char* basetable = "./../dxcc/src/db/dxcc_basetable.db";
 
     size_t lineindex {0};
     std::ifstream src(inputfile);
     while(src.good()) {
-        if(++lineindex == 1) continue; // Überschrift der CSV überspringen
         std::string inputstr; // nimmt eine Zeile der CSV entgegen
         std::vector<std::string> csvFields; // nimmt die zerlegten Strings von inputstr auf.
         getline(src, inputstr);
+        if(++lineindex == 1) getline(src, inputstr);
         // DEBUG
-        std::cerr << inputstr << '/n';
+        // std::cerr << inputstr << '/n';
+        std::cout << lineindex << std::endl;
         // ENDE DEBUG
         QsoData qsoData;
         std::string substr {""};
         size_t inputstr_index {0};
         while(inputstr_index < inputstr.length()) { // das ist möglich da das erste Zeichen des ersten
-            if(inputstr.at(inputstr_index) == ';') {  // Substrings ein " ist, das kann übersprungen werden.
-                csvFields.push_back(substr);
-                substr = "";
-                ++inputstr_index;
-            }
-            if(inputstr.at(inputstr_index) == '"') continue; // die " werden übersprungen
-            substr = substr + inputstr.at(inputstr_index);
+              if(inputstr.at(inputstr_index == '"'))
+                  if(inputstr_index < inputstr.length()-1 && inputstr.at(inputstr_index) + 1 == '"') {
+                      substr = "";
+                      ++inputstr_index;
+                  }
+              if(inputstr.at(inputstr_index) == ';' || inputstr_index == inputstr.length()-1) {
+                  csvFields.push_back(substr);
+                  ++inputstr_index;
+              }
+              else {
+                  substr = substr + inputstr.at(inputstr_index);
+                  ++inputstr_index;
+              }
+
         }
         // wir  brauchen nur bestimmte CSV-Daten im Vektor für den Import
         // Achtung! in der CSV kommt erst rsts dann rstr. Deshalb hier der Zuweisungsdreher
-        enum Field {CALL, DATE, TIME, BAND, MODE, QSLR, QSLS, RSTR=8, RSTS=7, QTH=9, LOCATOR=10,
+        enum Field {CALL=0, DATE, TIME, BAND, MODE, QSLR, QSLS, RSTR=8, RSTS=7, QTH=9, LOCATOR=10,
                            REMARKS=11, OPERATOR_NAME=12, QSLMANAGER=15};
 
         /* Strategie:
@@ -144,9 +153,9 @@ void importCSV(const char* homecall, const char* inputfile) {
 
         // we fill the qsoData struct:
         Array2d<std::string> callsign = splitCall(csvFields.at(Field::CALL));
-        qsoData.prefix = callsign.at(1,1); // using upper in SQL-Statement
-        qsoData.call = callsign.at(1,2);   // dito
-        qsoData.suffix = callsign.at(1,3); // dito
+        qsoData.prefix = callsign.at(0,0); // using upper in SQL-Statement
+        qsoData.call = callsign.at(0,1);   // dito
+        qsoData.suffix = callsign.at(0,2); // dito
         qsoData.date = yyyymmdd(csvFields.at(Field::DATE));
         qsoData.time = addSeconds(csvFields.at(Field::TIME));
         qsoData.band = csvFields.at(Field::BAND); // Format: 80m - using upper in SQL statement to get 80M
