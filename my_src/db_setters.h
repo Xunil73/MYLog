@@ -112,12 +112,11 @@ void importCSV(const char* homecall, const char* inputfile) {
         std::vector<std::string> csvFields; // nimmt die zerlegten Strings von inputstr auf.
         getline(src, inputstr);
         if(++lineindex == 1) getline(src, inputstr);
-        // DEBUG
-        // std::cerr << inputstr << '/n';
-        // ENDE DEBUG
-        QsoData qsoData;
+        QsoData qsoData; // struct nimmt alle Qso-Daten als Stringelemente auf, wird gefüllt mit csvFields.at(i)
         std::string substr {""};
         size_t inputstr_index {0};
+        /* wir zerteilen eine csv-Zeile in die einzelnen Daten: Zeichen innerhalb " " werden gespeichert,
+           das ';' dient als Trenner zwischen den Daten. */
         while(inputstr_index < inputstr.length()) {
               if(inputstr.at(inputstr_index == '"'))
                   if(inputstr_index < inputstr.length()-1 && inputstr.at(inputstr_index) + 1 == '"') {
@@ -133,9 +132,7 @@ void importCSV(const char* homecall, const char* inputfile) {
                   if(inputstr.at(inputstr_index) != '"') substr = substr + inputstr.at(inputstr_index);
                   ++inputstr_index;
               }
-        // DEBUG
-        //for(int i =0; i<csvFields.size(); ++i) {std::cout << csvFields.at(i) << std::endl;}
-        // ENDE DEBUG
+
         }
         // wir  brauchen nur bestimmte CSV-Daten im Vektor für den Import
         // Achtung! in der CSV kommt erst rsts dann rstr. Deshalb hier der Zuweisungsdreher
@@ -144,10 +141,10 @@ void importCSV(const char* homecall, const char* inputfile) {
 
         /* Strategie:
            Nun Zerlegen wir das Call mit splitCall() aus hamfunc.h und speichern alle Teile des Vectors in
-           dem Struct. Wir müssen noch das Datumformat drehen. Der Eingabestrom aus der CSV muss noch
-           geschlossen werden. Zuletzt wird das Struct in die Datenbanktabelle "qsos" gespeichert.
-           Dazu wird eine qsos-table-setter-funktion geschrieben die das Struct in die DB einfügt.
-           Das Struct muss noch um die fehlenden Spalten der qsos-table ergänzt werden.
+           dem Struct. Wir müssen noch das Datumformat drehen.
+           Das Struct wird in die Datenbanktabelle "qsos" gespeichert.
+           Alle Strings, die per Definition in Grossbuchstaben in der Datenbank abgelegt werden, werden
+           mit dem INSERT-Statement in Verbindung mit der SQL UPPER() Funktion in Grosslettern geändert
         */
 
         // we fill the qsoData struct:
@@ -190,6 +187,8 @@ std::string yyyymmdd(const std::string& ddmmyyyy) {
     return yyyy + '-' + mm + '-' + dd;
 }
 
+/* SQL verlangt das Zeitformat hh:mm:ss - in der csv ist jedoch hh:mm
+   mit dieser Funktion hängen wir noch :ss an den String an */
 std::string addSeconds(const std::string& tme) {
     return tme + ":00";
 }

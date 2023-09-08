@@ -1,12 +1,13 @@
-db_setters scheint korrekt importieren zu wollen, nun aber SQL - Fehler.
-Die Tabellen müssen noch auf UNIQUE umgeschrieben werden!!!
+Das enum Fields in db_setters.h wird noch um die fehlenden Felder des Struct
+QsoData ergaenzt und in eine global.h ausgelagert. Das Struct wird noch für
+andere Funktionen u.a. in main() benoetigt. 
 
-
-
-hamfunc.h Funktionen hinsichtlich Wiederverwendbarkeit umschreiben:
+hamfunc.h und db_setters.h Funktionen hinsichtlich Wiederverwendbarkeit umschreiben:
 die Funktionen getDxCCRefIDs(const std::string& call) um ein
 getDxCCRefIDs(const std::string& call, const char* pathToDatabase) erweitern
 da der Pfad zur dxcc_datenbank fest in die Funktion geschrieben wurde.
+Auch der Pfad zur Importdatei (Swisslog-Sicherung) wurde erstmal als 
+Literal festgelegt. 
 
 #############################################
 Important:
