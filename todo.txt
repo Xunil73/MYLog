@@ -1,3 +1,5 @@
+Fehler bei der letzten Zeile des Imports - siehe png Screenshot
+
 Das enum Fields in db_setters.h wird noch um die fehlenden Felder des Struct
 QsoData ergaenzt und in eine global.h ausgelagert. Das Struct wird noch für
 andere Funktionen u.a. in main() benoetigt. 
