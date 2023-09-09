@@ -29,31 +29,31 @@ void quit() {
 int main() {
 
 
-//    int row, col; //Zeilen, Spalten
-//    initscr();
-//    atexit(quit);
+    int row, col; //Zeilen, Spalten
+    initscr();
+    atexit(quit);
 
-//    getmaxyx(stdscr, row, col);
-//    clear();
-//    noecho();
-//    cbreak();
-//    curs_set(FALSE);
-//    keypad(stdscr, TRUE);
-//    //nodelay(stdscr, TRUE); // zum Test auskommentiert, da ich Programmende ganz unten durch getch() verhindere
-//    termResizeOrQuit(row, col); /* wir muessen terminal resizen falls zu klein, ansonsten Abbruch
-//                                   Definition in initializations.h */
+    getmaxyx(stdscr, row, col);
+    clear();
+    noecho();
+    cbreak();
+    curs_set(FALSE);
+    keypad(stdscr, TRUE);
+    //nodelay(stdscr, TRUE); // zum Test auskommentiert, da ich Programmende ganz unten durch getch() verhindere
+    termResizeOrQuit(row, col); /* wir muessen terminal resizen falls zu klein, ansonsten Abbruch
+                                   Definition in initializations.h */
 
-//    start_color();
+    start_color();
 
-//    drawStdscrStylesheet(row, col); /* Grundlegendes Stylesheet des stdscr - initializations.h */
-//    refresh();
-//    getch();
+    drawStdscrStylesheet(row, col); /* Grundlegendes Stylesheet des stdscr - initializations.h */
+    refresh();
+    getch();
 
-//    return 0;
+    return 0;
 
-
-importCSV("DB2MQ", "/home/harry/Dokumente/Amateurfunk/Swisslog_Sicherung/DB2MQ_DJ5MY/DB2MQ_DJ5MY_Sicherung_CSV_Format/DB2MQ_DJ5MY_20190901.csv");
-
+/* Code zum Testen der Importfunktion aus Swisslog - ok
+    importSwisslogCSV("DB2MQ", "/home/harry/Dokumente/Amateurfunk/Swisslog_Sicherung/DB2MQ_DJ5MY/DB2MQ_DJ5MY_Sicherung_CSV_Format/DB2MQ_DJ5MY_20190901.csv");
+*/
 /*
     {  //Code zum Testen einzelner Funktionen - wenn Ncurses läuft iostream und diesen Code löschen!!!
         //string call = "E1K";

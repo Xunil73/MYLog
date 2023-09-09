@@ -35,8 +35,8 @@ struct QsoData {
     std::string remarks {""};
 };
 
-/* Der Unterschied isLogImport ist: bei true wird Datum/Zeit als String übernommen
-                                         bei false wird es mit den SQL DATE() / TIME() in die DB geschrieben */
+/* Wirkungsweise bool isLogImport: bei true wird Datum/Zeit als String übernommen
+                                   bei false wird es mit SQL DATE() / TIME() in die DB geschrieben */
 void insertQsoToDB(const QsoData& qsoData, bool isLogImport) {
 
     const char* basetable {"./../dxcc/src/db/dxcc_basetable.db"};
@@ -101,7 +101,7 @@ void insertQsoToDB(const QsoData& qsoData, bool isLogImport) {
 
 }
 
-void importCSV(const char* homecall, const char* inputfile) {
+void importSwisslogCSV(const char* homecall, const char* inputfile) {
 
     const char* basetable = "./../dxcc/src/db/dxcc_basetable.db";
 
@@ -136,7 +136,7 @@ void importCSV(const char* homecall, const char* inputfile) {
         }
         // wir  brauchen nur bestimmte CSV-Daten im Vektor für den Import
         // Achtung! in der CSV kommt erst rsts dann rstr. Deshalb hier der Zuweisungsdreher
-        enum Field {CALL=0, DATE, TIME, BAND, MODE, QSLR, QSLS, RSTR=8, RSTS=7, QTH=9, LOCATOR=10,
+        enum SwisslogField {CALL=0, DATE, TIME, BAND, MODE, QSLR, QSLS, RSTR=8, RSTS=7, QTH=9, LOCATOR=10,
                            REMARKS=11, OPERATOR_NAME=12, QSLMANAGER=15};
 
         /* Strategie:
@@ -148,30 +148,31 @@ void importCSV(const char* homecall, const char* inputfile) {
         */
 
         // we fill the qsoData struct:
-        Array2d<std::string> callsign = splitCall(csvFields.at(Field::CALL));
-        qsoData.prefix = callsign.at(0,0); // using upper in SQL-Statement
-        qsoData.call = callsign.at(0,1);   // dito
-        qsoData.suffix = callsign.at(0,2); // dito
-        qsoData.date = yyyymmdd(csvFields.at(Field::DATE));
-        qsoData.time = addSeconds(csvFields.at(Field::TIME));
-        qsoData.band = csvFields.at(Field::BAND); // Format: 80m - using upper in SQL statement to get 80M
-        qsoData.mode = csvFields.at(Field::MODE); // is upper in src file
-        if(csvFields.at(Field::QSLR) == "0") qsoData.qslr = "NO";
-        else qsoData.qslr = "YES";
-        if(csvFields.at(Field::QSLS) == "0") qsoData.qsls = "NO";
-        else qsoData.qsls = "YES";
-        qsoData.rstr = csvFields.at(Field::RSTR);
-        qsoData.rsts = csvFields.at(Field::RSTS);
-        qsoData.qth = csvFields.at(Field::QTH);
-        qsoData.locator = csvFields.at(Field::LOCATOR); // using upper in SQL statement
-        qsoData.remarks = csvFields.at(Field::REMARKS);
-        qsoData.operator_name = csvFields.at(Field::OPERATOR_NAME);
-        qsoData.qslmanager = csvFields.at(Field::QSLMANAGER); // using upper in SQL statement
+        if(csvFields.size() > 0) {
+            Array2d<std::string> callsign = splitCall(csvFields.at(SwisslogField::CALL));
+            qsoData.prefix = callsign.at(0,0); // using upper in SQL-Statement
+            qsoData.call = callsign.at(0,1);   // dito
+            qsoData.suffix = callsign.at(0,2); // dito
+            qsoData.date = yyyymmdd(csvFields.at(SwisslogField::DATE));
+            qsoData.time = addSeconds(csvFields.at(SwisslogField::TIME));
+            qsoData.band = csvFields.at(SwisslogField::BAND); // Format: 80m - using upper in SQL statement to get 80M
+            qsoData.mode = csvFields.at(SwisslogField::MODE); // is upper in src file
+            if(csvFields.at(SwisslogField::QSLR) == "0") qsoData.qslr = "NO";
+            else qsoData.qslr = "YES";
+            if(csvFields.at(SwisslogField::QSLS) == "0") qsoData.qsls = "NO";
+            else qsoData.qsls = "YES";
+            qsoData.rstr = csvFields.at(SwisslogField::RSTR);
+            qsoData.rsts = csvFields.at(SwisslogField::RSTS);
+            qsoData.qth = csvFields.at(SwisslogField::QTH);
+            qsoData.locator = csvFields.at(SwisslogField::LOCATOR); // using upper in SQL statement
+            qsoData.remarks = csvFields.at(SwisslogField::REMARKS);
+            qsoData.operator_name = csvFields.at(SwisslogField::OPERATOR_NAME);
+            qsoData.qslmanager = csvFields.at(SwisslogField::QSLMANAGER); // using upper in SQL statement
 
-        qsoData.homecall = homecall;
+            qsoData.homecall = homecall;
 
-        insertQsoToDB(qsoData, true);
-
+            insertQsoToDB(qsoData, true);
+        }
     }
     src.close();
 }
